@@ -1,0 +1,46 @@
+.frame{
+    background-color: #efefef;
+    padding: 1rem;
+    border-radius: 2px;
+    width: 55vh;
+
+    -webkit-box-shadow: 10px 10px 7px -5px rgba(0,0,0,0.23);
+    -moz-box-shadow: 10px 10px 7px -5px rgba(0,0,0,0.23);
+    box-shadow: 10px 10px 7px -5px rgba(0,0,0,0.23);
+
+    display: block;
+    margin: auto;
+}
+
+.container{
+    display: block;
+    margin: 1vh;
+}
+
+.image{
+    height: 52vh;
+    width: 52vh;
+}
+
+ul{
+
+    list-style: none;
+    padding: 0;
+    
+    li{
+        display: inline;
+        padding-right: 1rem;
+    }
+
+    .Name{
+        font-size: 2rem;
+    }
+
+    .Sex{
+        font-size: 1.5rem;
+    }
+
+    .Age{
+        font-size: 1.5rem;
+    }
+}

@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { FrameComponent } from './frame/frame.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FiltersComponent } from './filters/filters.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FiltersComponent } from './filters/filters.component';
     MainComponent,
     FrameComponent,
     ButtonsComponent,
-    FiltersComponent
+    FiltersComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
