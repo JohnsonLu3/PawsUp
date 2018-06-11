@@ -1,7 +1,15 @@
 .button{
-    background-color: green;
-    padding: 1rem;
-    border-radius: 100px;
-    height: 1.2rem;
-    width: 1.2rem;
+    display: inline;
+
+    button{
+        color: white;
+        padding: 1rem;
+        border-radius: 100px;
+        border-style: none;
+
+        i{
+            font-size: 1.2rem;
+        }
+
+    }
 }
