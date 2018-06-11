@@ -6,7 +6,9 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "allowJs": true
+
   },
   "files": [
     "test.ts",
