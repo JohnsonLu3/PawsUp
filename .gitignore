@@ -39,4 +39,4 @@ testem.log
 Thumbs.db
 
 #api files
-*.yml
+api.json

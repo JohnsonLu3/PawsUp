@@ -1,5 +1,6 @@
 // Fill out data fields below with keys provided by 
 // petfinder and rename this file to api.yml
 
-API Key = '~'
-API Secret = '~'
+{
+    "API" : "~~~~~~"
+}
