@@ -53,3 +53,15 @@ ul{
          float: right;
     }
 }
+
+#header{
+    margin: 1rem 0 0 0;
+}
+
+#subHeader{
+    margin: .1rem 0 0 0;
+    li{
+        font-size: 1rem;
+        color: grey;
+    }
+}
