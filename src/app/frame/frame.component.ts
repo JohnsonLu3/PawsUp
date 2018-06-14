@@ -16,6 +16,7 @@ export class FrameComponent implements OnInit {
   ngOnInit() {
      let api = new ApiBean();
      let key = api.getAPI();
+     api.sendRequest("");
   }
 
 }
