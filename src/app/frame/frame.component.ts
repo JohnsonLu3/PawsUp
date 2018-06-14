@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
+import { ApiBean } from '../beans/api-bean';
+
 @Component({
   selector: 'app-frame',
   templateUrl: './frame.component.html',
@@ -12,6 +14,8 @@ export class FrameComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+     let api = new ApiBean();
+     let key = api.getAPI();
   }
 
 }
