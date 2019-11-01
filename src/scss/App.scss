@@ -1,0 +1,12 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.shadow {
+  -webkit-box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
+  box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
+}

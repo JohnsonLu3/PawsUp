@@ -1,0 +1,70 @@
+.frame{
+    
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.petImage{
+    flex: 1;
+    img{
+        border-radius: 3px;
+        padding: 10px;
+        height: 50vh;
+    }
+}
+
+.profile{
+    padding: 10px;
+    flex: 1;
+
+    h2{
+        margin: 4px 0;
+    }
+
+    .desc{
+        p{ 
+            display: inline;
+            padding-right: 5px;
+            font-style: italic;
+        }
+    }
+
+    .about{
+
+    }
+}
+
+.controls{
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    
+    button{
+        font-size: 2em;
+        border-radius: 50%;
+        border-style: none;
+        padding: .5em;
+        color: white;
+    }
+
+    .add{
+        background-color: green;
+    }
+
+    .more{
+        color: grey;
+    }
+
+    .pass{
+        background-color: red;
+        transform: rotate(180deg);
+    }
+
+    button:hover{
+        cursor: pointer;
+    }
+}

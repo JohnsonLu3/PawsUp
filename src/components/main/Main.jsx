@@ -1,10 +1,11 @@
 import React from 'react';
 import '../../scss/App.scss';
+import Frame from './Frame'
 
 function Main() {
   return (
     <main>
-        <p>TEST</p>
+        <Frame />
     </main>
   );
 }
