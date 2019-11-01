@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Main />
-      <CornerRibbon/>
+      <CornerRibbon />
       <Footer />
     </div>
   );

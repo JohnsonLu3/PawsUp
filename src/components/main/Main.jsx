@@ -5,7 +5,8 @@ import Frame from './Frame'
 function Main() {
   return (
     <main>
-        <Frame />
+      <Frame />
+      <div id="backgroundImage"></div>
     </main>
   );
 }

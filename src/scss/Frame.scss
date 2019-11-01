@@ -1,18 +1,30 @@
+#backgroundImage{
+    z-index: -1;
+    position: absolute;
+    opacity: .05;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+    background-image: url("https://www.wildtextures.com/wp-content/uploads/2011/09/checker-480x480.jpg");
+}
+
 .frame{
-    
+    z-index: 1;    
     background-color: white;
     border-radius: 4px;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    max-width: 40vh;
 }
 
 .petImage{
     flex: 1;
+    padding: 10px;
+
     img{
         border-radius: 3px;
-        padding: 10px;
-        height: 50vh;
+        width: 100%;
     }
 }
 
@@ -25,10 +37,13 @@
     }
 
     .desc{
+        margin-bottom: 10px;
+
         p{ 
             display: inline;
             padding-right: 5px;
             font-style: italic;
+            color: grey;
         }
     }
 
@@ -66,5 +81,24 @@
 
     button:hover{
         cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+    .frame{
+        height: 80%;
+    }
+    .petImage{
+
+    }
+
+    .controls{
+        button {
+            font-size: 1.5em;
+        }
+    }
+
+    .profile {
+        padding: 2px 10px;
     }
 }

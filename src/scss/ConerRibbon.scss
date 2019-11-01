@@ -95,3 +95,9 @@
     background: #ec0;
   }
 }
+
+@media(max-width: 480px){
+    .cornerRibbon{
+        display: none;
+    }
+}

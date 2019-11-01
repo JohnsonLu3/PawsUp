@@ -10,7 +10,6 @@ export default function Description(props) {
                 <p>{sex}</p>
                 <p>{size}</p>
             </div>
-            <p className="about">{desc}</p>
         </div>
     )
 }

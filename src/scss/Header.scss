@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap");
 
 header {
+  z-index: 1;
   background-color: rgb(92, 170, 195);
   text-align: center;
   padding: 5px 10px;
+  position: absolute;
+  width: 100%;
 
   .brandIcon {
     display: inline;
@@ -19,4 +22,17 @@ header {
     color: white;
     font-family: "Permanent Marker", cursive;
   }
+}
+
+#settings {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  position: absolute;
+  right: 3vw;
+  height: 80%;
+  width: auto;
+}
+
+#settings:hover{
+  cursor: pointer;
 }
