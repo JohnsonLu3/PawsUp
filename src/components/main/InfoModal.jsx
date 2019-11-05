@@ -27,7 +27,7 @@ export default class EnlargeModal extends React.Component {
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                     <div className="profile">
-                        <div className="profileImage"><img src={this.props.image} /></div>
+                        <div className="profileImage"><img src={this.props.image} alt="Image of Rubble"/></div>
                         <div className="bio">
                             <h2>
                                 <a href="https://www.petfinder.com/dog/rubble-46484621/oh/lancaster/fairfield-area-humane-society-oh586/?referrer_id=029655c8-1135-403f-8839-c6c5c1020ebc">

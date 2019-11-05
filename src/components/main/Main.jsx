@@ -10,6 +10,9 @@ function Main() {
   return (
     <main>
       <Frame />
+      <Frame />
+      <Frame />
+      <Frame />
       <InfoModal isOpen="false" image="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46484621/1/?bust=1572982306"/>
       <div id="backgroundImage"></div>
       {printAPI()}
