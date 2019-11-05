@@ -25,7 +25,7 @@ class Frame extends React.Component {
         let defaultPos = this.state.defaultPos;
 
         return (
-            <Draggable axis="x" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
+            <Draggable axis="x" cancel="img"  position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
                 <div className="frame shadow">
                     <div className="slideIconContainer">
                         <FontAwesomeIcon id="slideIcon" icon={faPaw} />

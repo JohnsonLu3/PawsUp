@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
 .modal {
   z-index: 2;
   position: absolute;
@@ -6,6 +8,7 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
+  font-family: "Open Sans", sans-serif;
 }
 
 .modalBody {
@@ -13,7 +16,6 @@
   background-color: white;
   border-radius: 4px;
   max-height: 75%;
-  overflow: hidden;
   padding: 10px;
 
   #closeModal {
@@ -36,21 +38,111 @@
 #enlargedImage {
   .modalBody {
     height: 75%;
-    width: 90%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     -ms-flex-direction: column;
+    // background-image: url(../image/bonesAndPaws.jpg);
+    // background-repeat: repeat;
 
-    div {
+    a{
+        color: rgb(92, 170, 195);
+        text-decoration: none;
+    }
+
+    a:hover{
+        text-decoration: underline;
+    }
+
+    a:visited{
+        color: rgb(92, 137, 195)
+    }
+
+    h2,
+    h3 {
+      color: rgb(54, 54, 54);
+    }
+
+    .profile {
       flex: 1 1;
-      align-items: center;
       overflow: hidden;
       display: flex;
 
-      img {
-        margin: auto;
-        height: 100%;
+      .profileImage {
+        flex: 1;
         justify-content: center;
+        height: 100%;
+        margin: auto;
+        align-items: center;
+        display: flex;
+        padding: 10px;
+
+        img {
+          margin: auto;
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+
+      .bio {
+        flex: 1;
+        padding: 10px;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        h2 {
+          font-size: 2em;
+        }
+        p {
+          margin: 4px 0;
+          width: 100%;
+          color: rgb(78, 78, 78);
+        }
+
+        dl {
+          margin-left: 20px;
+          dt {
+            font-weight: 600;
+          }
+          dd {
+            margin: 0 10px 0 5px;
+          }
+          span {
+            display: block;
+            margin: 4px 0;
+          }
+
+          dt,
+          dd {
+            display: inline;
+            color: rgb(87, 87, 87);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  #enlargedImage {
+    .modalBody {
+      width: 80%;
+
+      .profile {
+        flex-direction: column;
+        .profileImage {
+        }
+        .bio {
+          p {
+            margin: 4px 0;
+            width: 100%;
+          }
+
+          dl {
+            margin-left: 5px;
+          }
+        }
       }
     }
   }

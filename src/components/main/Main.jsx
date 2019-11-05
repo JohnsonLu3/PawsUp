@@ -1,13 +1,13 @@
 import React from 'react';
 import '../../scss/App.scss';
 import Frame from './Frame'
-import EnlargeModal from './EnlargeModal'
+import InfoModal from './InfoModal'
 
 function Main() {
   return (
     <main>
       <Frame />
-      <EnlargeModal isOpen="false" image="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46353677/1/?bust=1571956783"/>
+      <InfoModal isOpen="false" image="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46484621/1/?bust=1572982306"/>
       <div id="backgroundImage"></div>
     </main>
   );
