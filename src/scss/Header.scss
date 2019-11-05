@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap");
 
 header {
-  z-index: 1;
+  z-index: 3;
   background-color: rgb(92, 170, 195);
   text-align: center;
   padding: 5px 10px;
   position: absolute;
   width: 100%;
-
+ 
   .brandIcon {
     display: inline;
     color: white;

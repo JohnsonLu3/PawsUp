@@ -1,0 +1,42 @@
+.modal{
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+}
+
+.modalBody{
+    margin: auto;
+    background-color: white;
+    border-radius: 4px;
+    max-height: 75%;
+    overflow: hidden;
+    padding: 10px;
+    
+    #closeModal{
+        font-size: 2em;
+        color: white;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        float: right;
+    }
+
+    #closeModal:hover{
+        cursor: pointer;
+    }
+}
+
+.hide-modal{
+    display: none;
+}
+
+
+#enlargedImage{
+    .modalBody{
+        height: 75%;
+        width: 75%;
+    }
+}
