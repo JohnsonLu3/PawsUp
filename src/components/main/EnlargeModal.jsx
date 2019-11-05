@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 
-export default class InfoModal extends React.Component {
+export default class EnlargeModal extends React.Component {
 
     state = {}
     
@@ -22,10 +22,13 @@ export default class InfoModal extends React.Component {
     render() {
         return (
             <div id="enlargedImage" className="modal hide-modal">
-                <div className="modalBody" style={this.style}>
+                <div className="modalBody">
                     <button id="closeModal" onClick={this.closeModal.bind(this)}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
+                    <div>
+                        <img src={this.props.image} />
+                    </div>
                 </div>
             </div>
         )
