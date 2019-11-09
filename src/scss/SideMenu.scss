@@ -1,0 +1,58 @@
+#sideMenu {
+  position: absolute;
+  z-index: 3;
+  background-color: white;
+  padding: 5px 20px;
+  height: 100%;
+  width: 100%;
+  max-width: 25%;
+  right: 0;
+}
+
+.sideHeader {
+  h2 {
+    display: inline;
+  }
+  button {
+    display: inline;
+    right: 0;
+    position: absolute;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 25px;
+    padding: 5px 10px;
+  }
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+
+    li{
+        padding: 5px 0;
+    }
+}
+
+input{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    background-color: rgb(230, 230, 230);
+}
+
+input::placeholder{
+    font-style: italic;
+    opacity: .7;
+}
+
+#watchList{
+    width: 100%;
+    padding: 5px;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    background-color: #5caac3;
+    border-radius: 5px;
+    border: none;
+}
