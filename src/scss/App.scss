@@ -18,6 +18,14 @@ main {
   box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
 }
 
+#dim{
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.623);
+}
+
 button:hover {
   cursor: pointer;
 }

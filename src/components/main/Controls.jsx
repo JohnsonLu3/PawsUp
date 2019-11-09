@@ -20,4 +20,5 @@ function printTest() {
 function enlarge(){
     let modal = document.getElementById("enlargedImage");
     $(modal).removeClass("hide-modal")
+    $("#dim").removeClass("hide");
 }

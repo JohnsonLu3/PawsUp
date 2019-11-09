@@ -1,12 +1,16 @@
 #sideMenu {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   background-color: white;
   padding: 5px 20px;
   height: 100%;
   width: 100%;
   max-width: 25%;
   right: 0;
+}
+
+.hide{
+    display: none;
 }
 
 .sideHeader {

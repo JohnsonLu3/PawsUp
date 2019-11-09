@@ -9,8 +9,9 @@ import SideMenu from './SideMenu'
 function App() {
   return (
     <div className="App">
+      <div id="dim" className="hide"></div>
       <Header />
-      <SideMenu/>
+      <SideMenu />
       <Main />
       <CornerRibbon />
       <Footer />

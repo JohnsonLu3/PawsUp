@@ -93,10 +93,12 @@ export default class EnlargeModal extends React.Component {
     closeModal() {
         let enlargedModal = document.getElementById("enlargedImage");
         $(enlargedModal).addClass("hide-modal")
+        $("#dim").addClass("hide");
     }
 
     openModal() {
         let enlargedModal = document.getElementById("enlargedImage");
         $(enlargedModal).removeClass("hide-modal")
+        $("#dim").removeClass("hide");
     }
 }
