@@ -9,8 +9,8 @@
   right: 0;
 }
 
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
 
 .sideHeader {
@@ -28,65 +28,65 @@
   }
 }
 
-ul{
-    list-style: none;
-    padding: 0;
+ul {
+  list-style: none;
+  padding: 0;
 
-    li{
-        padding: 5px 0;
-    }
+  li {
+    padding: 5px 0;
+  }
 }
 
-#locationContainer{
+#locationContainer {
   display: flex;
 
-  input{
+  input {
     flex: 2;
   }
-  button{
+  button {
     font-size: 24px;
     background: none;
-    border:none;
+    border: none;
   }
 }
 
-input{
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    background-color: rgb(230, 230, 230);
+input {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  background-color: rgb(230, 230, 230);
 }
 
-input::placeholder{
-    font-style: italic;
-    opacity: .7;
+input::placeholder {
+  font-style: italic;
+  opacity: 0.7;
 }
 
-#watchList{
-    width: 100%;
-    padding: 5px;
-    font-weight: 600;
-    color: white;
-    font-size: 16px;
-    background-color: #5caac3;
-    border-radius: 5px;
-    border: none;
+#watchList {
+  width: 100%;
+  padding: 5px;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  background-color: #5caac3;
+  border-radius: 5px;
+  border: none;
 }
 
-@media  (max-width: 1280px){
+@media (max-width: 1280px) {
   #sideMenu {
     max-width: 45%;
-  }  
+  }
 }
 
-@media  (max-width: 768px){
+@media (max-width: 768px) {
   #sideMenu {
     max-width: 50%;
-  }  
+  }
 }
 
-@media  (max-width: 500px){
+@media (max-width: 500px) {
   #sideMenu {
     max-width: 75%;
-  }  
+  }
 }

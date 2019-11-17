@@ -2,25 +2,25 @@ import React from 'react'
 import { Marker, Map, GoogleApiWrapper } from 'google-maps-react';
 import { relative } from 'path';
 
-export class GoogleMap extends React.Component {
+export class MapContainer extends React.Component {
 
     mapStyles = {
-      
+
     };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            location: { lat:  40.7459706, lng: -122.14184416996333 }
+            location: { lat: 40.7459706, lng: -122.14184416996333 }
         }
     }
 
     displayMarkers = () => {
-            return <Marker position={{
-                lat: this.state.location.lat,
-                lng: this.state.location.lng
-            }}/>
+        return <Marker position={{
+            lat: this.state.location.lat,
+            lng: this.state.location.lng
+        }} />
     }
 
     render() {
@@ -37,4 +37,4 @@ export class GoogleMap extends React.Component {
     }
 } export default GoogleApiWrapper({
     apiKey: 'AIzaSyCN-bXyX3PLH90ANNuBAOZ6Cgk-MTwWF08'
-})(GoogleMap);
+})(MapContainer);
