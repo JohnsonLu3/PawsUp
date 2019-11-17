@@ -6,6 +6,8 @@ import Footer from './Footer'
 import CornerRibbon from './CornerRibbon'
 import SideMenu from './SideMenu'
 
+let currentCity = "New York City"
+
 function App() {
   return (
     <div className="App">

@@ -12,13 +12,27 @@ main {
   height: 100%;
 }
 
+.sr {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.error{
+  color: rgb(206, 2, 2);
+  font-weight: 600;;
+}
+
 .shadow {
   -webkit-box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
   box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
 }
 
-#dim{
+#dim {
   height: 100%;
   width: 100%;
   z-index: 3;

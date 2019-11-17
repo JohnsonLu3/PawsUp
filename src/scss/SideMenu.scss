@@ -37,11 +37,23 @@ ul{
     }
 }
 
+#locationContainer{
+  display: flex;
+
+  input{
+    flex: 2;
+  }
+  button{
+    font-size: 24px;
+    background: none;
+    border:none;
+  }
+}
+
 input{
     border-radius: 5px;
     border: none;
     padding: 5px;
-    width: 100%;
     background-color: rgb(230, 230, 230);
 }
 
