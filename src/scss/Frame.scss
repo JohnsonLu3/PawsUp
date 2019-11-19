@@ -29,18 +29,24 @@
   flex-direction: column;
   max-width: 40vh;
   position: absolute;
+  height: 75%;
 }
 
 .frameContents {
   z-index: 1;
+  height: 100%;
   background-color: white;
   border-radius: 4px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .petImage {
-  flex: 1;
+  flex: 2;
   padding: 10px;
+  align-items: center;
+  display: flex;
 
   img {
     border-radius: 3px;
@@ -50,7 +56,6 @@
 
 .profile {
   padding: 10px;
-  flex: 1;
 
   h2 {
     margin: 4px 0;
@@ -72,7 +77,6 @@
 }
 
 .controls {
-  flex: 1;
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;

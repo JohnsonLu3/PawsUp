@@ -36,8 +36,8 @@ class Frame extends React.Component {
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
                     <div className="frameContents shadow" id={"frameContents_" + id}>
-                        <PetImage />
-                        <Description name="Lola" age="Puppy" sex="Female" size="Medium" desc="" />
+                        <PetImage img="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46484621/1/?bust=1572982306"/>
+                        <Description name="Rubble" age="Young" sex="Male" size="Medium" link="https://www.petfinder.com/dog/rubble-46484621/oh/lancaster/fairfield-area-humane-society-oh586/?referrer_id=029655c8-1135-403f-8839-c6c5c1020ebc" />
                         <Controls />
                     </div>
                 </div>
