@@ -14,7 +14,7 @@ class Frame extends React.Component {
     state = {
         defaultPos: { x: 0, y: 0 }
     }
-    
+
     constructor(props) {
         super(props);
     }
@@ -30,12 +30,12 @@ class Frame extends React.Component {
         let defaultPos = this.state.defaultPos;
 
         return (
-            <Draggable axis="x" cancel="img"  position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
-                <div className="frame shadow">
+            <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
+                <div className="frame">
                     <div className="slideIconContainer">
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
-                    <div className="frameContents" id={"frameContents_" + id}>
+                    <div className="frameContents shadow" id={"frameContents_" + id}>
                         <PetImage />
                         <Description name="Lola" age="Puppy" sex="Female" size="Medium" desc="" />
                         <Controls />
@@ -51,20 +51,20 @@ class Frame extends React.Component {
         let slideIcon = document.getElementById("slideIcon_" + this.props.petId);
 
         let offSet = parseInt($(draggableElement).css('transform').split(',')[4]);
-        let addZone = -(window.screen.width / 4);
-        let passZone = (window.screen.width / 4);
-        if(offSet > 0){
-            $(slideIcon).css({'color' : '#ff2f0d'})
-        }else{
-            $(slideIcon).css({'color' : '#00b66a'})
+        let addZone = -(window.screen.width / 8);
+        let passZone = (window.screen.width / 8);
+        if (offSet < 0) {
+            $(slideIcon).css({ 'color': '#ff2f0d' })
+        } else {
+            $(slideIcon).css({ 'color': '#00b66a' })
         }
 
         if (offSet < addZone) {
-            console.log("add");
-        } else if (offSet > passZone) {
             console.log("pass");
+        } else if (offSet > passZone) {
+            console.log("add");
         }
-        $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet) / (window.screen.width / 2)) });
+        $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet) / (window.screen.width / 6)) });
     }
 
     reset() {

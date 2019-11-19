@@ -36,3 +36,10 @@ header {
 #settings:hover {
   cursor: pointer;
 }
+
+@media (max-width: 600px){
+  #settings {
+    right: 8vw;
+  }
+  
+}
