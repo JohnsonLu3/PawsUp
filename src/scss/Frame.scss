@@ -5,6 +5,8 @@
   background-repeat: repeat;
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
   background-image: url("../image/checker-480x480.jpg");
 }
 
@@ -35,6 +37,7 @@
 .frameContents {
   z-index: 1;
   height: 100%;
+  width: 100%;
   background-color: white;
   border-radius: 4px;
   padding: 10px;
