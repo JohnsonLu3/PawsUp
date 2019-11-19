@@ -15,7 +15,7 @@ export class MapContainer extends React.Component {
 
         this.view = new View({
             center: [40.7459706, -73.7124675],
-            zoom: 8,
+            zoom: 12,
             minZoom: 2,
             maxZoom: 28
 
@@ -30,10 +30,7 @@ export class MapContainer extends React.Component {
                 })
             ],
             target: 'map',
-            view: new View({
-                center: [0, 0],
-                zoom: 2
-            })
+            view: this.view
         });
     }
 
