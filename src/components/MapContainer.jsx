@@ -1,40 +1,48 @@
 import React from 'react'
-import { Marker, Map, GoogleApiWrapper } from 'google-maps-react';
-import { relative } from 'path';
+import 'ol/ol.css';
+import View from 'ol/View';
+import OSM from 'ol/source/OSM';
+import Zoom from 'ol/control/Zoom';
+import Map from 'ol/Map';
+import TileLayer from 'ol/layer/Tile';
+
+import '../scss/SideMenu.scss'
 
 export class MapContainer extends React.Component {
-
-    mapStyles = {
-
-    };
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            location: { lat: 40.7459706, lng: -122.14184416996333 }
-        }
+        this.view = new View({
+            center: [40.7459706, -73.7124675],
+            zoom: 8,
+            minZoom: 2,
+            maxZoom: 28
+
+        });
     }
 
-    displayMarkers = () => {
-        return <Marker position={{
-            lat: this.state.location.lat,
-            lng: this.state.location.lng
-        }} />
+    componentDidMount() {
+        let map = new Map({
+            layers: [
+                new TileLayer({
+                    source: new OSM()
+                })
+            ],
+            target: 'map',
+            view: new View({
+                center: [0, 0],
+                zoom: 2
+            })
+        });
     }
 
     render() {
         return (
-            <Map
-                google={this.props.google}
-                zoom={12}
-                style={this.mapStyles}
-                initialCenter={{ lat: 40.7459706, lng: -73.7124675 }}
-            >
-                {this.displayMarkers()}
-            </Map>
+            <div>
+                <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+                <div id="map" ref="map"></div>
+            </div>
         );
     }
-} export default GoogleApiWrapper({
-    apiKey: 'AIzaSyCN-bXyX3PLH90ANNuBAOZ6Cgk-MTwWF08'
-})(MapContainer);
+} export default (MapContainer);
