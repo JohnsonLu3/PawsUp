@@ -17,7 +17,7 @@ function Header() {
 
 export default Header;
 
-function showMenu(){
+function showMenu() {
   $("#sideMenu").removeClass("hide");
   $("#dim").removeClass("hide");
 }

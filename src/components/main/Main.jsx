@@ -22,7 +22,7 @@ class Main extends React.Component {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
-        headers: { 
+        headers: {
           "Authorization": this.state.api.getAPI().token,
         }
       })

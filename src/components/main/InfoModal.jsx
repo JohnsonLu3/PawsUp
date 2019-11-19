@@ -24,6 +24,7 @@ export default class EnlargeModal extends React.Component {
             <div id="enlargedImage" className="modal hide-modal">
                 <div className="modalBody">
                     <button id="closeModal" onClick={this.closeModal.bind(this)}>
+                        <span className="sr">Close Modal</span>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                     <div className="profile">

@@ -6,9 +6,18 @@ import $ from 'jquery'
 export default function Controls() {
     return (
         <div className="controls">
-            <button className="pass" title="Pass"><FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={printTest} /></button>
-            <button className="more" title="View Larger Image"><FontAwesomeIcon className="brandIcon" icon={faEllipsisH} onClick={enlarge.bind(this)} /></button>
-            <button className="add" title="Add To Watch List"><FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={printTest} /></button>
+            <button className="pass" title="Pass">
+                <span className="sr">Pass</span>
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={printTest} />
+            </button>
+            <button className="more" title="View Larger Image">
+            <span className="sr">Learn More</span>
+                <FontAwesomeIcon className="brandIcon" icon={faEllipsisH} onClick={enlarge.bind(this)} />
+            </button>
+            <button className="add" title="Add To Watch List">
+            <span className="sr">Add to Watch List</span>
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={printTest} />
+            </button>
         </div>
     )
 }
