@@ -50,10 +50,10 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <Frame />
-        <Frame />
-        <Frame />
-        <Frame />
+        <Frame petId="25489" />
+        <Frame petId="26592" />
+        <Frame petId="65729" />
+        <Frame petId="67108" />
         <InfoModal isOpen="false" image="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46484621/1/?bust=1572982306" />
         <div id="backgroundImage"></div>
       </main>

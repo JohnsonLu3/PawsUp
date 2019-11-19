@@ -14,6 +14,11 @@ class Frame extends React.Component {
     state = {
         defaultPos: { x: 0, y: 0 }
     }
+    
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         let temp = this.state;
         temp.draggableElement = ReactDOM.findDOMNode(this);
@@ -21,16 +26,16 @@ class Frame extends React.Component {
     }
 
     render() {
-
+        let id = this.props.petId;
         let defaultPos = this.state.defaultPos;
 
         return (
             <Draggable axis="x" cancel="img"  position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
                 <div className="frame shadow">
                     <div className="slideIconContainer">
-                        <FontAwesomeIcon id="slideIcon" icon={faPaw} />
+                        <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
-                    <div id="frameContents">
+                    <div className="frameContents" id={"frameContents_" + id}>
                         <PetImage />
                         <Description name="Lola" age="Puppy" sex="Female" size="Medium" desc="" />
                         <Controls />
@@ -42,8 +47,8 @@ class Frame extends React.Component {
 
     handleDrag() {
         let draggableElement = this.state.draggableElement;
-        let frameContent = document.getElementById("frameContents");
-        let slideIcon = document.getElementById("slideIcon");
+        let frameContent = document.getElementById("frameContents_" + this.props.petId);
+        let slideIcon = document.getElementById("slideIcon_" + this.props.petId);
 
         let offSet = parseInt($(draggableElement).css('transform').split(',')[4]);
         let addZone = -(window.screen.width / 4);
@@ -63,7 +68,7 @@ class Frame extends React.Component {
     }
 
     reset() {
-        let frameContent = document.getElementById("frameContents");
+        let frameContent = document.getElementById("frameContents_" + this.props.petId);
 
         $(frameContent).css({ 'opacity': 1 });
     }
