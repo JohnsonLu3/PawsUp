@@ -31,5 +31,7 @@ export default class Pet{
         for(let i = 0; i < obj.photos.length; i++){
             photos.push(obj.photos[i].full);
         }
+
+        return photos;
     }
 }
