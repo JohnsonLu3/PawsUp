@@ -1,14 +1,14 @@
 import React from 'react'
 
 export default function Description(props) {
-    const { name, age, sex, size, desc } = props;
+    const pet = props.pet;
     return (
         <div className="profile">
-            <h2>{name}</h2>
+            <h2><a href={pet.link} target="_blank">{pet.name}</a></h2>
             <div className="desc">
-                <p>{age}</p>
-                <p>{sex}</p>
-                <p>{size}</p>
+                <p>{pet.age}</p>
+                <p>{pet.gender}</p>
+                <p>{pet.size}</p>
             </div>
         </div>
     )

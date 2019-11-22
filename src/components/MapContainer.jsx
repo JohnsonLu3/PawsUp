@@ -15,7 +15,7 @@ export class MapContainer extends React.Component {
 
         this.view = new View({
             center: [-73.7124675, 40.7459706],
-            zoom: 12,
+            zoom: 20,
             minZoom: 2,
             maxZoom: 28
 

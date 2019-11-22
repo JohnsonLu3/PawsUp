@@ -4,6 +4,9 @@ import Frame from './Frame'
 import InfoModal from './InfoModal'
 import API from '../../Api'
 
+import TestData from '../test/TestPets'
+import Pet from '../../model/Pet';
+
 class Main extends React.Component {
 
   constructor(props) {
@@ -50,14 +53,25 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <Frame petId="25489" />
-        <Frame petId="26592" />
-        <Frame petId="65729" />
-        <Frame petId="67108" />
+        {this.getFrames()}
+
         <InfoModal isOpen="false" image="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46484621/1/?bust=1572982306" />
         <div id="backgroundImage"></div>
       </main>
     )
+  }
+
+  getFrames(){
+    let testData = new TestData().getTestPets().animals;
+    let frames = []
+
+    for(let i = 0; i < testData.length; i++){
+      let pet = new Pet(testData[i]);
+      let id = pet.pet.id;
+      frames.push(<Frame petId={id} petModel={pet} />);
+    }
+
+    return frames;
   }
 }
 

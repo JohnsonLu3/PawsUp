@@ -32,10 +32,16 @@ main {
   box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
 }
 
+.light-shadow{
+  -webkit-box-shadow: 6px 5px 5px -1px rgba(0, 0, 0, 0.01);
+  -moz-box-shadow: 6px 5px 5px -1px rgba(0, 0, 0, 0.01);
+  box-shadow: 6px 5px 5px -1px rgba(0, 0, 0, 0.01);
+}
+
 #dim {
   height: 100%;
   width: 100%;
-  z-index: 3;
+  z-index: 4;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.623);
 }

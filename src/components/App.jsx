@@ -5,8 +5,12 @@ import Main from './main/Main';
 import Footer from './Footer'
 import CornerRibbon from './CornerRibbon'
 import SideMenu from './SideMenu'
+import History from '../model/History'
+import Pet from '../model/Pet'
 
 let currentCity = "New York City"
+let history = new History()
+let queue = [];
 
 function App() {
   return (
