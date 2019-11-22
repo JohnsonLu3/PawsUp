@@ -30,7 +30,7 @@ class Frame extends React.Component {
         let defaultPos = this.state.defaultPos;
         let petModel = this.props.petModel.pet;
         let id = this.state.petId;
-        const {pass, add} = this.props;
+        const { pass, add } = this.props;
         return (
             <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
                 <div className="frame">
@@ -38,9 +38,9 @@ class Frame extends React.Component {
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
-                        <PetImage images={petModel.images}/>
-                        <Description pet={petModel}/>
-                        <Controls pass={pass} add={add}/>
+                        <PetImage images={petModel.images} />
+                        <Description pet={petModel} />
+                        <Controls pass={pass} add={add} />
                     </div>
                 </div>
             </Draggable>
@@ -48,29 +48,37 @@ class Frame extends React.Component {
     }
 
     handleDrag() {
-        const {pass, add} = this.props;
+        const { pass, add } = this.props;
         let id = this.state.petId;
         let draggableElement = this.state.draggableElement;
         let frameContent = document.getElementById("frameContents_" + id);
         let slideIcon = document.getElementById("slideIcon_" + id);
 
+        let width = window.innerWidth;
         let offSet = parseInt($(draggableElement).css('transform').split(',')[4]);
-        let addZone = -(window.screen.width / 8);
-        let passZone = (window.screen.width / 8);
+        let triggerZone;
+        console.log(offSet + " : " + width)
+        if (width > 768) {
+            triggerZone = 500;
+        } else if (width > 540) {
+            triggerZone = 250;
+        } else {
+            triggerZone = 180;
+        }
+
         if (offSet < 0) {
             $(slideIcon).css({ 'color': '#ff2f0d' })
         } else {
             $(slideIcon).css({ 'color': '#00b66a' })
         }
 
-        if (offSet < addZone) {
-            console.log("pass");
+        if (offSet < -triggerZone) {
             pass(id);
-        } else if (offSet > passZone) {
-            console.log("add");
+        } else if (offSet > triggerZone) {
             add(id);
         }
-        $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet) / (window.screen.width / 6)) });
+
+        $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet/triggerZone)) });
     }
 
     reset() {

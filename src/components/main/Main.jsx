@@ -86,7 +86,6 @@ class Main extends React.Component {
     }
 
     this.setState(temp);
-
   }
 
   addPetToWatchList(id){
