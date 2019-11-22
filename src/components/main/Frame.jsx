@@ -22,14 +22,15 @@ class Frame extends React.Component {
     componentDidMount() {
         let temp = this.state;
         temp.draggableElement = ReactDOM.findDOMNode(this);
+        temp.petId = this.props.petId;
         this.setState(temp);
     }
 
     render() {
         let defaultPos = this.state.defaultPos;
         let petModel = this.props.petModel.pet;
-        let id = this.props.petId;
-
+        let id = this.state.petId;
+        const {pass, add} = this.props;
         return (
             <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
                 <div className="frame">
@@ -39,7 +40,7 @@ class Frame extends React.Component {
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
                         <PetImage images={petModel.images}/>
                         <Description pet={petModel}/>
-                        <Controls />
+                        <Controls pass={pass} add={add}/>
                     </div>
                 </div>
             </Draggable>
@@ -47,9 +48,11 @@ class Frame extends React.Component {
     }
 
     handleDrag() {
+        const {pass, add} = this.props;
+        let id = this.state.petId;
         let draggableElement = this.state.draggableElement;
-        let frameContent = document.getElementById("frameContents_" + this.props.petId);
-        let slideIcon = document.getElementById("slideIcon_" + this.props.petId);
+        let frameContent = document.getElementById("frameContents_" + id);
+        let slideIcon = document.getElementById("slideIcon_" + id);
 
         let offSet = parseInt($(draggableElement).css('transform').split(',')[4]);
         let addZone = -(window.screen.width / 8);
@@ -62,14 +65,17 @@ class Frame extends React.Component {
 
         if (offSet < addZone) {
             console.log("pass");
+            pass(id);
         } else if (offSet > passZone) {
             console.log("add");
+            add(id);
         }
         $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet) / (window.screen.width / 6)) });
     }
 
     reset() {
-        let frameContent = document.getElementById("frameContents_" + this.props.petId);
+        let id = this.state.petId;
+        let frameContent = document.getElementById("frameContents_" + id);
 
         $(frameContent).css({ 'opacity': 1 });
     }

@@ -15,7 +15,8 @@ class Main extends React.Component {
       api: new API(),
       error: null,
       isLoaded: false,
-      items: []
+      items: [],
+      pets: new TestData().getTestPets().animals
     };
   }
 
@@ -62,16 +63,36 @@ class Main extends React.Component {
   }
 
   getFrames(){
-    let testData = new TestData().getTestPets().animals;
+    let testData = this.state.pets;
     let frames = []
 
     for(let i = 0; i < testData.length; i++){
       let pet = new Pet(testData[i]);
       let id = pet.pet.id;
-      frames.push(<Frame petId={id} petModel={pet} />);
+      frames.push(<Frame petId={id} petModel={pet} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
     }
 
     return frames;
+  }
+
+  removePetFromList(id){
+    console.log(id + " : removed from queue");
+    let temp = this.state;
+    
+    for(let i = 0; i < temp.pets.length; i++){
+      if(temp.pets[i].id == id){
+        temp.pets.splice(i,1)
+      }
+    }
+
+    this.setState(temp);
+
+  }
+
+  addPetToWatchList(id){
+    // add pet to watch list
+
+    this.removePetFromList(id)
   }
 }
 

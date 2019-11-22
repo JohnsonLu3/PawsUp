@@ -5,19 +5,21 @@ export default function PetImage(props) {
         
     return (
         <div className="petImage">
-            <img src={getImagePath()} alt="" draggable="false" />
+            {getImagePath()}
         </div>
     )
 
     function getImagePath(){
         let images = props.images;
+        let imageArray = []
         
         if(images != null){
-            console.log(images[0])
-            return images[0];
+            for(let i = 0; i < images.length; i++){
+                imageArray.push(<li><img src={images[i]} alt="" draggable="false" /></li>)
+            }
+            return <ul>{imageArray}</ul>;
         }else{
-            console.log(NoImage)
-            return NoImage;
+            return <img src={NoImage} alt="" draggable="false" />;
         }
     }
 }
