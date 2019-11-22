@@ -40,7 +40,7 @@ class Frame extends React.Component {
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
                         <PetImage images={petModel.images} />
                         <Description pet={petModel} />
-                        <Controls pass={pass} add={add} />
+                        <Controls pet={petModel} pass={pass} add={add} />
                     </div>
                 </div>
             </Draggable>

@@ -3,12 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 
-export default function Controls() {
+export default function Controls(props) {
+
+    const {pet, add, pass} = props;
+
     return (
         <div className="controls">
             <button className="pass" title="Pass">
                 <span className="sr">Pass</span>
-                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={printTest} />
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={()=>{pass(pet.id)}} />
             </button>
             <button className="more" title="View Larger Image">
             <span className="sr">Learn More</span>
@@ -16,14 +19,10 @@ export default function Controls() {
             </button>
             <button className="add" title="Add To Watch List">
             <span className="sr">Add to Watch List</span>
-                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={printTest} />
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={()=>{add(pet.id)}} />
             </button>
         </div>
     )
-}
-
-function printTest() {
-    console.log("test");
 }
 
 function enlarge() {
