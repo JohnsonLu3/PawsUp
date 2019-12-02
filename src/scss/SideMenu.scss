@@ -92,6 +92,11 @@ input::placeholder {
   #sideMenu {
     max-width: 50%;
   }
+
+  #locationContainer {
+    display: block;
+  }
+  
 }
 
 @media (max-width: 500px) {

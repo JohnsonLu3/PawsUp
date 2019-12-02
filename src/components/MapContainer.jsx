@@ -1,8 +1,12 @@
 import React from 'react'
 import 'ol/ol.css';
+import { transform, fromLonLat } from 'ol/proj';
+import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
-import Zoom from 'ol/control/Zoom';
+import SourceVector from 'ol/source/Vector';
+import LayerVector from 'ol/layer/Vector';
 import Map from 'ol/Map';
 import TileLayer from 'ol/layer/Tile';
 
@@ -14,8 +18,8 @@ export class MapContainer extends React.Component {
         super(props);
 
         this.view = new View({
-            center: [-73.7124675, 40.7459706],
-            zoom: 20,
+            center: transform([-73.7949, 40.7282], 'EPSG:4326', 'EPSG:3857'),
+            zoom: 14,
             minZoom: 2,
             maxZoom: 28
 
@@ -26,12 +30,27 @@ export class MapContainer extends React.Component {
         let map = new Map({
             layers: [
                 new TileLayer({
-                    source: new OSM()
+                    source: new OSM(),
                 })
             ],
             target: 'map',
             view: this.view
         });
+        
+        let marker = new Feature({
+            geometry: new Point(
+              fromLonLat([-73.7949, 40.7282])
+            ),  // Cordinates of New York's Town Hall
+          });
+
+          let vectorSource = new SourceVector({
+            features: [marker]
+          });
+          let markerVectorLayer = new LayerVector({
+            source: vectorSource,
+          });
+
+        map.addLayer(markerVectorLayer);
     }
 
     render() {
