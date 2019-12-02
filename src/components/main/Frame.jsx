@@ -28,7 +28,7 @@ class Frame extends React.Component {
 
     render() {
         let defaultPos = this.state.defaultPos;
-        let petModel = this.props.petModel.pet;
+        let petModel = this.props.petModel;
         let id = this.state.petId;
         const { pass, add } = this.props;
         return (

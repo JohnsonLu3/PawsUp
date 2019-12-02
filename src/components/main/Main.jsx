@@ -9,15 +9,18 @@ import Pet from '../../model/Pet';
 
 class Main extends React.Component {
 
+  state = {
+    api: new API(),
+    error: null,
+    isLoaded: false,
+    items: [],
+    rawData: new TestData().getTestPets().animals,
+    pets : []
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      api: new API(),
-      error: null,
-      isLoaded: false,
-      items: [],
-      pets: new TestData().getTestPets().animals
-    };
+    this.getPets();
   }
 
   componentDidMount() {
@@ -56,20 +59,31 @@ class Main extends React.Component {
       <main>
         {this.getFrames()}
 
-        <InfoModal isOpen="false" image="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/46484621/1/?bust=1572982306" />
+        <InfoModal pets={this.state.pets} isOpen="false" />
         <div id="backgroundImage"></div>
       </main>
     )
   }
 
-  getFrames(){
-    let testData = this.state.pets;
-    let frames = []
+  getPets(){
+    let testData = this.state.rawData;
+    let temp = this.state;
 
     for(let i = 0; i < testData.length; i++){
       let pet = new Pet(testData[i]);
-      let id = pet.pet.id;
-      frames.push(<Frame petId={id} petModel={pet} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
+      temp.pets.push(pet);
+    }
+
+    this.setState(temp);
+  }
+
+  getFrames(){
+    let pets = this.state.pets;
+    let frames = []
+
+    for(let i = 0; i < pets.length; i++){
+      let id = pets[i].id;
+      frames.push(<Frame petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
     }
 
     return frames;

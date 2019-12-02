@@ -8,10 +8,9 @@ export default class EnlargeModal extends React.Component {
 
     state = {}
 
-    style = {
-        backgroundImage: 'url(' + this.props.image + ')',
-        backgroundSize: 'cover'
-    };
+    constructor(props) {
+        super(props);
+      }
 
     componentDidMount() {
         let temp = this.state;
@@ -20,6 +19,9 @@ export default class EnlargeModal extends React.Component {
     }
 
     render() {
+
+        let pet = this.props.pets[this.props.pets.length-1]
+        
         return (
             <div id="enlargedImage" className="modal hide-modal">
                 <div className="modalBody">
@@ -28,59 +30,59 @@ export default class EnlargeModal extends React.Component {
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                     <div className="profile">
-                        <div className="profileImage"><img src={this.props.image} alt="Rubble"/></div>
+                        <div className="profileImage"><img src={pet.images[0]} alt="Rubble"/></div>
                         <div className="bio">
                             <h2>
-                                <a href="https://www.petfinder.com/dog/rubble-46484621/oh/lancaster/fairfield-area-humane-society-oh586/?referrer_id=029655c8-1135-403f-8839-c6c5c1020ebc">
-                                    Rubble
+                                <a href={pet.link} target="_blank">
+                                    {pet.name}
                                 </a>
                             </h2>
                             <dl>
                                 <span>
                                     <dt>Id:</dt>
-                                    <dd>46484621</dd>
+                                    <dd>{pet.id}</dd>
                                 </span>
                                 <dt>Age:</dt>
-                                <dd>Young</dd>
+                                <dd>{pet.age}</dd>
                                 <dt>Gender:</dt>
-                                <dd>Male</dd>
+                                <dd>{pet.gender}</dd>
                                 <span>
                                     <dt>Breed:</dt>
-                                    <dd>Dachshund</dd>
+                                    <dd>{pet.breed.primary}</dd>
                                     <dt>Size:</dt>
-                                    <dd>Medium</dd>
+                                    <dd>{pet.size}</dd>
                                 </span>
                             </dl>
                             <h3>Location:</h3>
                             <dl>
                                 <span> <dt>Address 1:</dt>
-                                    <dd>1721 Granville Pike</dd></span>
+                                    <dd>{pet.address1}</dd></span>
                                 <span> <dt>Address 2:</dt>
-                                    <dd>www.fairhumane.org</dd></span>
+                                    <dd>{pet.address2}</dd></span>
                                 <span><dt>City:</dt>
-                                    <dd>Lancaster</dd></span>
+                                    <dd>{pet.city}</dd></span>
                                 <span> <dt>State:</dt>
-                                    <dd>OH</dd></span>
+                                    <dd>{pet.state}</dd></span>
                                 <span><dt>postcode:</dt>
-                                    <dd>43130</dd></span>
+                                    <dd>{pet.postcode}</dd></span>
                             </dl>
                             <h3>Details:</h3>
                             <dl>
                                 <span>
                                     <dt>Shots Current:</dt>
-                                    <dd>Yes</dd>
+                                    <dd>{pet.shots}</dd>
                                 </span>
                                 <span>
-                                    <dt>Spayed Neutered</dt>
-                                    <dd>yes</dd>
+                                    <dt>Spayed/Neutered</dt>
+                                    <dd>{pet.spayed}</dd>
                                 </span>
                                 <span>
                                     <dt>House Trained:</dt>
-                                    <dd>No</dd>
+                                    <dd>{pet.houseTrained}</dd>
                                 </span>
                                 <span>
                                     <dt>Special Needs</dt>
-                                    <dd>No</dd>
+                                    <dd>{pet.specialNeeds}</dd>
                                 </span>
                             </dl>
 

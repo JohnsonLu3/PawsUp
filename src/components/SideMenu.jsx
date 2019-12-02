@@ -9,6 +9,11 @@ let city_names = ["Aberdeen", "Abilene", "Akron", "Albany", "Albuquerque", "Alex
 
 export default class SideMenu extends React.Component {
 
+    state = {
+        lat : 0,
+        long : 0
+    }
+
     componentDidMount() {
         this.findLocation()
     }
@@ -35,7 +40,7 @@ export default class SideMenu extends React.Component {
                         <li><span id="locationError" className="error"></span></li>
                         <li>
                             <div>
-                                <MapContainer />
+                                <MapContainer lat={this.state.lat} log={this.state.long} />
                             </div>
                         </li>
                         <li><button id="watchList">View Watch List</button></li>
@@ -53,14 +58,21 @@ export default class SideMenu extends React.Component {
 
     findLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPosition);
+            navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
         } else {
             document.getElementById("locationError").innerHTML = "Geolocation is not supported by this browser.";
         }
     }
 
     showPosition(position) {
-        document.getElementById("latitude_input").value = "Latitude: " + position.coords.latitude;
-        document.getElementById("longitude_input").value = "  Longitude: " + position.coords.longitude;
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        document.getElementById("latitude_input").value = "Latitude: " + lat;
+        document.getElementById("longitude_input").value = "  Longitude: " + long;
+
+        let temp = this.state;
+        temp.lat = lat;
+        temp.long = long;
+        this.setState(temp);
     }
 }

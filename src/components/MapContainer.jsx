@@ -18,7 +18,7 @@ export class MapContainer extends React.Component {
         super(props);
 
         this.view = new View({
-            center: transform([-73.7949, 40.7282], 'EPSG:4326', 'EPSG:3857'),
+            center: transform([props.long, props.lat], 'EPSG:4326', 'EPSG:3857'),
             zoom: 14,
             minZoom: 2,
             maxZoom: 28
@@ -39,7 +39,7 @@ export class MapContainer extends React.Component {
         
         let marker = new Feature({
             geometry: new Point(
-              fromLonLat([-73.7949, 40.7282])
+              fromLonLat([this.props.long, this.props.lat])
             ),  // Cordinates of New York's Town Hall
           });
 
