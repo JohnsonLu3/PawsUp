@@ -40,7 +40,7 @@ class Frame extends React.Component {
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
                         <PetImage images={petModel.images} />
                         <Description pet={petModel} />
-                        <Controls pet={petModel} pass={pass} add={add} />
+                        <Controls pet={petModel} add={add} pass={pass}  />
                     </div>
                 </div>
             </Draggable>
@@ -62,8 +62,14 @@ class Frame extends React.Component {
             triggerZone = 500;
         } else if (width > 540) {
             triggerZone = 250;
-        } else {
+        } else if(width > 360){
             triggerZone = 180;
+        }else{
+            triggerZone = 160;
+        }
+
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            triggerZone = 140;
         }
 
         if (offSet < 0) {
