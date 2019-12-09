@@ -51,6 +51,8 @@ export class MapContainer extends React.Component {
           });
 
         map.addLayer(markerVectorLayer);
+
+        map.updateSize();
     }
 
     render() {

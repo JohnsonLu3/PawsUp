@@ -38,7 +38,7 @@ class Frame extends React.Component {
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
-                        <PetImage images={petModel.images} />
+                        <PetImage id={petModel.id} images={petModel.images} />
                         <Description pet={petModel} />
                         <Controls pet={petModel} add={add} pass={pass}  />
                     </div>
