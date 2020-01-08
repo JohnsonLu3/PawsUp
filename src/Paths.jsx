@@ -6,14 +6,14 @@ import { Route, BrowserRouter as Router } from 'react-router-dom'
 
 export default function Paths(){
     return(
-        <Router>
+        <Router basename={window.location.href}>
         <Route exact path="/">
           <Main />
         </Route>
-        <Route exact path="/login">
+        <Route path="/login">
           <Login />
         </Route>
-        <Route exact path="/watch">
+        <Route path="/watch">
           <WatchList />
         </Route>
       </Router>
