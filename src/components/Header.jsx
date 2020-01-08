@@ -8,7 +8,7 @@ import $ from 'jquery'
 function Header() {
   return (
     <header className="">
-      <FontAwesomeIcon className="brandIcon" icon={faPaw} />
+      <a href="/"><FontAwesomeIcon className="brandIcon" icon={faPaw} /></a>
       <h1>Paws Up</h1>
       <button id="settings" onClick={showMenu}><FontAwesomeIcon className="brandIcon" icon={faCog} /></button>
     </header>

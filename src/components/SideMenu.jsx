@@ -39,11 +39,13 @@ export default class SideMenu extends React.Component {
                         </li>
                         <li><span id="locationError" className="error"></span></li>
                         <li>
-                            <div>
+                            <div id="mapContainer">
                                 <MapContainer lat={this.state.lat} log={this.state.long} />
                             </div>
                         </li>
-                        <li><button id="watchList">View Watch List</button></li>
+                        <li>
+                            <a href="/watch" id="watchList">View Watch List</a>
+                        </li>
                     </ul>
                 </div>
             </div>
