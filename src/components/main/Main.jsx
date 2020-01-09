@@ -83,9 +83,8 @@ class Main extends React.Component {
 
     for(let i = 0; i < pets.length; i++){
       let id = pets[i].id;
-      frames.push(<Frame petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
+      frames.push(<Frame delay={(i+2)/10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
     }
-
     return frames;
   }
 

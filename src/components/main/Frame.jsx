@@ -30,10 +30,13 @@ class Frame extends React.Component {
         let defaultPos = this.state.defaultPos;
         let petModel = this.props.petModel;
         let id = this.state.petId;
+        let delay = this.props.delay;
+        delay = {animationDelay :  delay + "s"};
         const { pass, add } = this.props;
+        
         return (
             <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
-                <div className="frame">
+                <div style={delay} className="frame">
                     <div className="slideIconContainer">
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
