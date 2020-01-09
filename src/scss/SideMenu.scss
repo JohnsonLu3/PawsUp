@@ -1,3 +1,5 @@
+@import "./palette.scss";
+
 #sideMenu {
   position: absolute;
   z-index: 4;
@@ -71,7 +73,7 @@ input::placeholder {
   font-weight: 600;
   color: white;
   font-size: 16px;
-  background-color: #ee8f00;
+  background-color: $primeOrange;
   border-radius: 5px;
   border: none;
   text-decoration: none;
