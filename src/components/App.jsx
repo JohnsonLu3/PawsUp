@@ -17,8 +17,7 @@ function App() {
     <div className="App">
       <div id="dim" className="hide"></div>
             
-      <Header />
-      <SideMenu />
+
       <Paths/>
       <CornerRibbon />
       <Footer />
