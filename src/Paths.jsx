@@ -6,19 +6,21 @@ import Header from './components/Header';
 import SideMenu from './components/SideMenu'
 import {
     BrowserRouter as Router,
-    IndexRoute ,
+    Switch ,
     Route,
 } from "react-router-dom";
 
-export default function Paths() {
+export default function Paths(props) {
+    const watchList = props.watchList;
     return (
         <Router basename={window.location.pathname}>
+            <Switch>
                 <Route exact path="/">
                     <Header />
                     <SideMenu />
-                    <Main />
+                    <Main watchList={watchList}/>
                 </Route>
-                <Route exact path="/login">
+                <Route exact path="#/login">
                     <Header />
                     <SideMenu />
                     <Login />
@@ -26,12 +28,9 @@ export default function Paths() {
                 <Route exact path="/watch">
                     <Header />
                     <SideMenu />
-                    <WatchList />
+                    <WatchList watchList={watchList}/>
                 </Route>
+            </Switch>
         </Router>
     )
-}
-
-function routeChangeListener(){
-    console.log("test-----")
 }

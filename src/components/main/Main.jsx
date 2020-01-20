@@ -15,12 +15,16 @@ class Main extends React.Component {
     isLoaded: false,
     items: [],
     rawData: new TestData().getTestPets().animals,
-    pets : []
+    pets : [],
+    watchList : []
   };
 
   constructor(props) {
     super(props);
     this.getPets();
+    let temp = this.state;
+    temp.watchList = this.props.watchList;
+    this.setState(temp);
   }
 
   componentDidMount() {
@@ -101,10 +105,11 @@ class Main extends React.Component {
     this.setState(temp);
   }
 
-  addPetToWatchList(id){
+  addPetToWatchList(pet){
     // add pet to watch list
-
-    this.removePetFromList(id)
+    let watchList = this.state.watchList;
+    watchList.push(pet);
+    this.removePetFromList(pet.id)
   }
 }
 

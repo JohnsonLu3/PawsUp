@@ -53,6 +53,7 @@ class Frame extends React.Component {
     handleDrag() {
         const { pass, add } = this.props;
         let id = this.state.petId;
+        let petModel = this.props.petModel;
         let draggableElement = this.state.draggableElement;
         let frameContent = document.getElementById("frameContents_" + id);
         let slideIcon = document.getElementById("slideIcon_" + id);
@@ -84,7 +85,7 @@ class Frame extends React.Component {
         if (offSet < -triggerZone) {
             pass(id);
         } else if (offSet > triggerZone) {
-            add(id);
+            add(petModel);
         }
 
         $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet/triggerZone)) });

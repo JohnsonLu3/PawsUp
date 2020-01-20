@@ -19,7 +19,7 @@ export default function Controls(props) {
             </button>
             <button className="add" title="Add To Watch List">
             <span className="sr">Add to Watch List</span>
-                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={()=>{add(pet.id)}} />
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={()=>{add(pet)}} />
             </button>
         </div>
     )

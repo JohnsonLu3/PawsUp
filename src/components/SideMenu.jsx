@@ -45,7 +45,7 @@ export default class SideMenu extends React.Component {
                             </div>
                         </li>
                         <li>
-                            <Link to={this.goToWatchList.bind(this)}><span href="/watch" id="watchList">View Watch List</span></Link>
+                            <Link to={this.goToWatchList.bind(this)}><span id="watchList">View Watch List</span></Link>
                         </li>
                     </ul>
                 </div>

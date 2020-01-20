@@ -1,28 +1,28 @@
 import React from 'react';
 import '../scss/App.scss';
-import Header from './Header';
 import Footer from './Footer'
 import CornerRibbon from './CornerRibbon'
-import SideMenu from './SideMenu'
-import History from '../model/History'
 import Paths from '../Paths'
 
+export default class App extends React.Component{
+  
+  state = {
+    watchList : []
+  }
 
-let currentCity = "New York City"
-let history = new History()
-let queue = [];
-
-function App() {
-  return (
-    <div className="App">
-      <div id="dim" className="hide"></div>
-            
-
-      <Paths/>
-      <CornerRibbon />
-      <Footer />
-    </div>
-  );
+  constructor(props){
+    super(props);
+    this.setState(this.state);
+  }
+  
+  render(){
+    return (
+      <div className="App">
+        <div id="dim" className="hide"></div>
+        <Paths watchList={this.state.watchList}/>
+        <CornerRibbon />
+        <Footer />
+      </div>
+    );
+  }
 }
-
-export default App;
