@@ -10,7 +10,7 @@ export default class WatchList extends React.Component {
         return(
             <main>
                 <div id="watchListBody" className="shadow">
-                    <h1>WatchList</h1>
+                    <h1>WatchList <span> [{this.state.watchList.length}]</span></h1>
                     {
                         this.getWatchList()
                     }
@@ -21,10 +21,12 @@ export default class WatchList extends React.Component {
 
     getWatchList(){
         let watchList = this.state.watchList;
-        let list = [];
+        if(watchList.length > 0){
+            let list = [];
         for(let i = 0; i < watchList.length; i++){
             list.push(
                 <li>
+                    <span>{i} </span>
                     <span>THUMBNAIL HERE </span>
                     <span>{watchList[i].name}</span>
                 </li>
@@ -36,5 +38,8 @@ export default class WatchList extends React.Component {
                 {list}
             </ul>
         );
+        }else{
+            return(<p>Watch List is empty.</p>)
+        }
     }
 }
