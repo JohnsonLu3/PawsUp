@@ -15,15 +15,11 @@ class Frame extends React.Component {
         defaultPos: { x: 0, y: 0 }
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
-        let temp = this.state;
-        temp.draggableElement = ReactDOM.findDOMNode(this);
-        temp.petId = this.props.petId;
-        this.setState(temp);
+        this.setState( (prevState) =>({
+            draggableElement : ReactDOM.findDOMNode(this),
+            petId : this.props.petId
+        }));
     }
 
     render() {

@@ -22,12 +22,14 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.getPets();
-    let temp = this.state;
-    temp.watchList = this.props.watchList;
-    this.setState(temp);
   }
 
   componentDidMount() {
+
+    this.setState((prevState, props) => ({
+      watchList: props.watchList
+    }));
+
     fetch("https://api.petfinder.com/v2/animals?type=dog",
       {
         method: 'GET',
@@ -78,7 +80,9 @@ class Main extends React.Component {
       temp.pets.push(pet);
     }
 
-    this.setState(temp);
+    this.setState((prevState, props) => ({
+      pets: temp.pets
+    }));
   }
 
   getFrames(){
@@ -87,32 +91,34 @@ class Main extends React.Component {
 
     for(let i = 0; i < pets.length; i++){
       let id = pets[i].id;
-      frames.push(<Frame delay={(i+2)/10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
+      frames.push(<Frame key={"key_" + id} delay={(i+2)/10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
     }
     return frames;
   }
 
   removePetFromList(id){
     console.log(id + " : removed from queue");
-    let temp = this.state;
+    let temp = this.state.pets;
     
-    for(let i = 0; i < temp.pets.length; i++){
-      if(temp.pets[i].id == id){
-        temp.pets.splice(i,1)
+    for(let i = 0; i < temp.length; i++){
+      if(temp[i].id === id){
+        temp.splice(i,1)
       }
     }
 
-    this.setState(temp);
+    this.setState(()=>({
+      pets : temp
+    }));
   }
 
   addPetToWatchList(pet){
     // add pet to watch list
     let watchList = this.state.watchList;
     watchList.push(pet);
+    this.setState(()=>({
+      watchList : watchList
+    }));
     this.removePetFromList(pet.id)
   }
 }
-
-
-
 export default Main;

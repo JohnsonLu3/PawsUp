@@ -6,18 +6,6 @@ import $ from 'jquery'
 
 export default class EnlargeModal extends React.Component {
 
-    state = {}
-
-    constructor(props) {
-        super(props);
-      }
-
-    componentDidMount() {
-        let temp = this.state;
-        temp.isOpen = this.props.isOpen;
-        this.setState(this.temp);
-    }
-
     render() {
 
         let pet = this.props.pets[this.props.pets.length-1]
@@ -33,7 +21,7 @@ export default class EnlargeModal extends React.Component {
                         <div className="profileImage"><img src={pet.images[0]} alt="Rubble"/></div>
                         <div className="bio">
                             <h2>
-                                <a href={pet.link} target="_blank">
+                                <a href={pet.link} target="_blank" rel="noopener noreferrer">
                                     {pet.name}
                                 </a>
                             </h2>

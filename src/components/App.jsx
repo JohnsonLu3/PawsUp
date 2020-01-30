@@ -10,11 +10,6 @@ export default class App extends React.Component{
     watchList : []
   }
 
-  constructor(props){
-    super(props);
-    this.setState(this.state);
-  }
-  
   render(){
     return (
       <div className="App">
