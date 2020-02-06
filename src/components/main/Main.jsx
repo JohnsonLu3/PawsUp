@@ -16,7 +16,7 @@ class Main extends React.Component {
     items: [],
     rawData: new TestData().getTestPets().animals,
     pets : [],
-    watchList : []
+    watchList : new Map()
   };
 
   constructor(props) {
@@ -123,7 +123,7 @@ class Main extends React.Component {
   addPetToWatchList(pet){
     // add pet to watch list
     let watchList = this.state.watchList;
-    watchList.push(pet);
+    watchList.set(pet.id, pet);
     this.setState(()=>({
       watchList : watchList
     }));

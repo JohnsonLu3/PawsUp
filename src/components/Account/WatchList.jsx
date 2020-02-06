@@ -10,7 +10,7 @@ export default class WatchList extends React.Component {
         return (
             <main>
                 <div id="watchListBody" className="shadow">
-                    <h1>WatchList <span> [{this.state.watchList.length}]</span></h1>
+                    <h1>WatchList <span> [{this.state.watchList.size}]</span></h1>
                     {
                         this.getWatchList()
                     }
@@ -21,17 +21,17 @@ export default class WatchList extends React.Component {
 
     getWatchList() {
         let watchList = this.state.watchList;
-        if (watchList.length > 0) {
+        if (watchList.size > 0) {
             let list = [];
-            for (let i = 0; i < watchList.length; i++) {
+            for(let [key, value] of watchList){
                 list.push(
-                    <li key={"key_" + watchList[i].id} className="watchlist-Card light-shadow">
-                        <span><img src={watchList[i].images[0]} alt={"picture of" + watchList[i].name} /></span>
+                    <li key={"key_" + value.id} className="watchlist-Card light-shadow">
+                        <span><img src={value.images[0]} alt={"picture of" + value.name} /></span>
                         <span>
-                            <div><h2><a href={watchList[i].link}  target="_blank" rel="noopener noreferrer">{watchList[i].name}</a></h2></div>
-                            <div>{watchList[i].age}</div>
-                            <div>{watchList[i].city}</div>
-                            <div><button  onClick={this.removePet.bind(this,i)}>Remove</button></div>
+                            <div><h2><a href={value.link}  target="_blank" rel="noopener noreferrer">{value.name}</a></h2></div>
+                            <div>{value.age}</div>
+                            <div>{value.city}</div>
+                            <div><button  onClick={this.removePet.bind(this,key)}>Remove</button></div>
                         </span>
                     </li>
                 );
@@ -47,9 +47,9 @@ export default class WatchList extends React.Component {
         }
     }
 
-    removePet(index){
+    removePet(id){
         let tempWatch = this.state.watchList;
-        tempWatch.splice(index,1);
+        tempWatch.delete(id);
         this.setState((prevState, props) =>({
             watchList : tempWatch
         }));

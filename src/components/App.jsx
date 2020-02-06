@@ -7,7 +7,7 @@ import Paths from '../Paths'
 export default class App extends React.Component{
   
   state = {
-    watchList : []
+    watchList : new Map()
   }
 
   render(){
