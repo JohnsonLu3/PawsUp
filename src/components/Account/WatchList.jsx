@@ -25,12 +25,13 @@ export default class WatchList extends React.Component {
             let list = [];
             for (let i = 0; i < watchList.length; i++) {
                 list.push(
-                    <li key={"key_" + watchList[i].id} className="light-shadow">
+                    <li key={"key_" + watchList[i].id} className="watchlist-Card light-shadow">
                         <span><img src={watchList[i].images[0]} alt={"picture of" + watchList[i].name} /></span>
                         <span>
                             <div><h2><a href={watchList[i].link}  target="_blank" rel="noopener noreferrer">{watchList[i].name}</a></h2></div>
                             <div>{watchList[i].age}</div>
                             <div>{watchList[i].city}</div>
+                            <div><button  onClick={this.removePet.bind(this,i)}>Remove</button></div>
                         </span>
                     </li>
                 );
@@ -44,5 +45,13 @@ export default class WatchList extends React.Component {
         } else {
             return (<p>Watch List is empty.</p>)
         }
+    }
+
+    removePet(index){
+        let tempWatch = this.state.watchList;
+        tempWatch.splice(index,1);
+        this.setState((prevState, props) =>({
+            watchList : tempWatch
+        }));
     }
 }

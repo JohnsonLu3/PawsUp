@@ -89,6 +89,15 @@ class Main extends React.Component {
     let pets = this.state.pets;
     let frames = []
 
+    if(pets.length === 0){
+        return(
+            <div id="NoPetsFound">
+                <p>Theres no more pets!</p>
+                <a href="https://www.petfinder.com/">Please video Petfinder for more Pets!</a>
+            </div>
+        )
+    }
+
     for(let i = 0; i < pets.length; i++){
       let id = pets[i].id;
       frames.push(<Frame key={"key_" + id} delay={(i+2)/10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);

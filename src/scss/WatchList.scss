@@ -26,6 +26,18 @@
             text-decoration: underline;
         }
 
+        .watchlist-Card{
+            button{
+                margin-top: 15px;
+                width: 100%;
+                color: red;
+                border: none;
+                font-weight: 600;
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+
         li{
             padding: 10px 20px;
             background: pink;

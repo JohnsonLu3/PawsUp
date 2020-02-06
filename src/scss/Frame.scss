@@ -40,6 +40,21 @@
   overflow: none;
 }
 
+#NoPetsFound{
+  font-weight: 600;
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: solid 0px white;
+  background-color: white;
+  padding: 2rem 4rem;
+  text-align: center;
+
+  a{
+    font-weight: 400;
+    font-size: .7em;
+  }
+}
+
 @keyframes rotateAni {
   0% {  
     transform: rotate(360deg) scale(0)  translateX(-10000px);
