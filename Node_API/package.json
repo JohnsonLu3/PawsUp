@@ -1,0 +1,25 @@
+{
+  "name": "pawsup",
+  "version": "1.0.0",
+  "description": "API for PawsUp using the Petfinder API",
+  "main": "index.js",
+  "scripts": {
+    "start": "run index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Petfinder",
+    "API",
+    "Nodejs"
+  ],
+  "author": "Johnson Lu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
