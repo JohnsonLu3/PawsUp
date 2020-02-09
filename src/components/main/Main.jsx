@@ -15,8 +15,8 @@ class Main extends React.Component {
     isLoaded: false,
     items: [],
     rawData: new TestData().getTestPets().animals,
-    pets : [],
-    watchList : new Map()
+    pets: [],
+    watchList: new Map()
   };
 
   constructor(props) {
@@ -24,8 +24,11 @@ class Main extends React.Component {
     this.getPets();
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.getFrames()
+  }
 
+  componentDidMount() {
     this.setState((prevState, props) => ({
       watchList: props.watchList
     }));
@@ -63,19 +66,17 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        {this.getFrames()}
-
         <InfoModal pets={this.state.pets} isOpen="false" />
         <div id="backgroundImage"></div>
       </main>
     )
   }
 
-  getPets(){
+  getPets() {
     let testData = this.state.rawData;
     let temp = this.state;
 
-    for(let i = 0; i < testData.length; i++){
+    for (let i = 0; i < testData.length; i++) {
       let pet = new Pet(testData[i]);
       temp.pets.push(pet);
     }
@@ -85,47 +86,47 @@ class Main extends React.Component {
     }));
   }
 
-  getFrames(){
+  getFrames() {
     let pets = this.state.pets;
     let frames = []
 
-    if(pets.length === 0){
-        return(
-            <div id="NoPetsFound">
-                <p>Theres no more pets!</p>
-                <a href="https://www.petfinder.com/">Please video Petfinder for more Pets!</a>
-            </div>
-        )
+    if (pets.length === 0) {
+      return (
+        <div id="NoPetsFound">
+          <p>Theres no more pets!</p>
+          <a href="https://www.petfinder.com/">Please video Petfinder for more Pets!</a>
+        </div>
+      )
     }
 
-    for(let i = 0; i < pets.length; i++){
+    for (let i = 0; i < pets.length; i++) {
       let id = pets[i].id;
-      frames.push(<Frame key={"key_" + id} delay={(i+2)/10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)}/>);
+      frames.push(<Frame key={"key_" + id} delay={(i + 2) / 10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)} />);
     }
     return frames;
   }
 
-  removePetFromList(id){
+  removePetFromList(id) {
     console.log(id + " : removed from queue");
     let temp = this.state.pets;
-    
-    for(let i = 0; i < temp.length; i++){
-      if(temp[i].id === id){
-        temp.splice(i,1)
+
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].id === id) {
+        temp.splice(i, 1)
       }
     }
 
-    this.setState(()=>({
-      pets : temp
+    this.setState(() => ({
+      pets: temp
     }));
   }
 
-  addPetToWatchList(pet){
+  addPetToWatchList(pet) {
     // add pet to watch list
     let watchList = this.state.watchList;
     watchList.set(pet.id, pet);
-    this.setState(()=>({
-      watchList : watchList
+    this.setState(() => ({
+      watchList: watchList
     }));
     this.removePetFromList(pet.id)
   }
