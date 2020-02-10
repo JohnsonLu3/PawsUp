@@ -19,53 +19,17 @@ class Main extends React.Component {
     watchList: new Map()
   };
 
-  constructor(props) {
-    super(props);
-    this.getPets();
-  }
-
-  componentWillMount() {
-    this.getFrames()
-  }
-
   componentDidMount() {
+    this.getPets();
     this.setState((prevState, props) => ({
       watchList: props.watchList
     }));
-
-    fetch("https://api.petfinder.com/v2/animals?type=dog",
-      {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: {
-          "Authorization": this.state.api.getAPI().token,
-        }
-      })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-          console.log(error)
-        }
-      )
   }
 
   render() {
     return (
       <main>
+        {this.getFrames()}
         <InfoModal pets={this.state.pets} isOpen="false" />
         <div id="backgroundImage"></div>
       </main>
@@ -101,7 +65,9 @@ class Main extends React.Component {
 
     for (let i = 0; i < pets.length; i++) {
       let id = pets[i].id;
-      frames.push(<Frame key={"key_" + id} delay={(i + 2) / 10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)} />);
+      if(!this.state.watchList.has(id)){
+        frames.push(<Frame key={"key_" + id} delay={(i + 2) / 10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)} />);
+      }
     }
     return frames;
   }
