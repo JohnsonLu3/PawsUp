@@ -18,7 +18,16 @@ class HttpController {
           res.send(result);
         });
       } else {
-        pf.getDogs().then(result => {
+        const filters = {
+          age: req.query.age,
+          gender: req.query.gender,
+          size: req.query.size,
+          spayed_neutered: req.query.spayed_neutered,
+          house_trained: req.query.house_trained,
+          shots_current: req.query.shots_current
+        };
+
+        pf.getDogs(filters).then(result => {
           res.send(result);
         });
       }

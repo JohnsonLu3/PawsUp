@@ -14,18 +14,9 @@ class Petfinder {
     this.getDogs();
   }
 
-  getDogs = () => {
-    return this.client.animal
-      .search({ type: "Dog", limit: this.limit })
-      .then(res => {
-        return res.data.animals;
-      })
-      .catch(err => {
-        throw err;
-      });
-  };
+  getDogs = filter => {
+    filter = { ...filter, ...{ type: "Dog", limit: this.limit } };
 
-  getDogsByFilter = filter => {
     return this.client.animal
       .search(filter)
       .then(res => {
