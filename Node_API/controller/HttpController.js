@@ -8,14 +8,16 @@ class HttpController {
 
   setGetReuqest = () => {
     this.app.get("/getPets", (req, res) => {
-      pf.getDogs().then(result =>{
-          res.send(result)
-      });
+      if (req.query.id) {
+        pf.getDogByID(req.query.id).then(result => {
+          res.send(result);
+        });
+      } else {
+        pf.getDogs().then(result => {
+          res.send(result);
+        });
+      }
     });
-
-    this.app.get("/getPets:id", (req, res) => {
-        
-      });
   };
 }
 module.exports = HttpController;
