@@ -3,7 +3,6 @@ import '../../scss/App.scss';
 import Frame from './Frame'
 import InfoModal from './InfoModal'
 import API from '../../Api'
-
 import TestData from '../test/TestPets'
 import Pet from '../../model/Pet';
 
@@ -36,7 +35,7 @@ class Main extends React.Component {
     )
   }
 
-  getPets() {
+  getPets = () => {
     let testData = this.state.rawData;
     let temp = this.state;
 
@@ -50,7 +49,7 @@ class Main extends React.Component {
     }));
   }
 
-  getFrames() {
+  getFrames = () => {
     let pets = this.state.pets;
     let frames = []
 
@@ -65,14 +64,14 @@ class Main extends React.Component {
 
     for (let i = 0; i < pets.length; i++) {
       let id = pets[i].id;
-      if(!this.state.watchList.has(id)){
-        frames.push(<Frame key={"key_" + id} delay={(i + 2) / 10} petId={id} petModel={pets[i]} pass={this.removePetFromList.bind(this)} add={this.addPetToWatchList.bind(this)} />);
+      if (!this.state.watchList.has(id)) {
+        frames.push(<Frame key={"key_" + id} delay={(i + 2) / 10} petId={id} petModel={pets[i]} pass={this.removePetFromList} add={this.addPetToWatchList} />);
       }
     }
     return frames;
   }
 
-  removePetFromList(id) {
+  removePetFromList = (id) => {
     console.log(id + " : removed from queue");
     let temp = this.state.pets;
 
@@ -87,7 +86,7 @@ class Main extends React.Component {
     }));
   }
 
-  addPetToWatchList(pet) {
+  addPetToWatchList = (pet) => {
     // add pet to watch list
     let watchList = this.state.watchList;
     watchList.set(pet.id, pet);

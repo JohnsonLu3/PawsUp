@@ -23,15 +23,15 @@ export default class WatchList extends React.Component {
         let watchList = this.state.watchList;
         if (watchList.size > 0) {
             let list = [];
-            for(let [key, value] of watchList){
+            for (let [key, value] of watchList) {
                 list.push(
                     <li key={"key_" + value.id} className="watchlist-Card light-shadow">
                         <span><img src={value.images[0]} alt={"picture of" + value.name} /></span>
                         <span>
-                            <div><h2><a href={value.link}  target="_blank" rel="noopener noreferrer">{value.name}</a></h2></div>
+                            <div><h2><a href={value.link} target="_blank" rel="noopener noreferrer">{value.name}</a></h2></div>
                             <div>{value.age}</div>
                             <div>{value.city}</div>
-                            <div><button  onClick={this.removePet.bind(this,key)}>Remove</button></div>
+                            <div><button onClick={() => this.removePet(key)}>Remove</button></div>
                         </span>
                     </li>
                 );
@@ -47,11 +47,12 @@ export default class WatchList extends React.Component {
         }
     }
 
-    removePet(id){
+    removePet = (id) => {
+        console.log(id);
         let tempWatch = this.state.watchList;
         tempWatch.delete(id);
-        this.setState((prevState, props) =>({
-            watchList : tempWatch
+        this.setState((prevState, props) => ({
+            watchList: tempWatch
         }));
     }
 }

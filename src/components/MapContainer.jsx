@@ -1,14 +1,5 @@
 import React from 'react'
-import 'ol/ol.css';
-import { transform, fromLonLat } from 'ol/proj';
-import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import View from 'ol/View';
-import OSM from 'ol/source/OSM';
-import SourceVector from 'ol/source/Vector';
-import LayerVector from 'ol/layer/Vector';
-import Map from 'ol/Map';
-import TileLayer from 'ol/layer/Tile';
+import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import '../scss/SideMenu.scss'
 
@@ -16,51 +7,25 @@ export class MapContainer extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.view = new View({
-            center: transform([props.long, props.lat], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 14,
-            minZoom: 2,
-            maxZoom: 28
-
-        });
     }
 
     componentDidMount() {
-        let map = new Map({
-            layers: [
-                new TileLayer({
-                    source: new OSM(),
-                })
-            ],
-            target: 'map',
-            view: this.view
-        });
-        
-        let marker = new Feature({
-            geometry: new Point(
-              fromLonLat([this.props.long, this.props.lat])
-            ),  // Cordinates of New York's Town Hall
-          });
-
-          let vectorSource = new SourceVector({
-            features: [marker]
-          });
-          let markerVectorLayer = new LayerVector({
-            source: vectorSource,
-          });
-
-        map.addLayer(markerVectorLayer);
-
-        map.updateSize();
     }
 
     render() {
+        const position = [40.7128, -74.0060]
         return (
-            <div>
-                <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-                <div id="map" ref="map"></div>
-            </div>
+            <LeafletMap center={position} zoom={13}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                />
+                <Marker position={position}>
+                    <Popup>
+                        A pretty CSS3 popup. <br />.
+                    </Popup>
+                </Marker>
+            </LeafletMap>
         );
     }
 } export default (MapContainer);

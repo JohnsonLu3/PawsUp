@@ -8,20 +8,20 @@ export default class InfoModal extends React.Component {
 
     render() {
 
-        if(this.props.pets.length === 0){
+        if (this.props.pets.length === 0) {
             return <span></span>;
-        }else{
-            let pet = this.props.pets[this.props.pets.length-1]
+        } else {
+            let pet = this.props.pets[this.props.pets.length - 1]
 
             return (
                 <div id="enlargedImage" className="modal hide-modal">
                     <div className="modalBody">
-                        <button id="closeModal" onClick={this.closeModal.bind(this)}>
+                        <button id="closeModal" onClick={this.closeModal}>
                             <span className="sr">Close Modal</span>
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
                         <div className="profile">
-                            <div className="profileImage"><img src={pet.images[0]} alt="Rubble"/></div>
+                            <div className="profileImage"><img src={pet.images[0]} alt="Rubble" /></div>
                             <div className="bio">
                                 <h2>
                                     <a href={pet.link} target="_blank" rel="noopener noreferrer">
@@ -85,13 +85,13 @@ export default class InfoModal extends React.Component {
         }
     }
 
-    closeModal() {
+    closeModal = () => {
         let enlargedModal = document.getElementById("enlargedImage");
         $(enlargedModal).addClass("hide-modal")
         $("#dim").addClass("hide");
     }
 
-    openModal() {
+    openModal = () => {
         let enlargedModal = document.getElementById("enlargedImage");
         $(enlargedModal).removeClass("hide-modal")
         $("#dim").removeClass("hide");

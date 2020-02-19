@@ -5,24 +5,24 @@ import NoImage from '../../image/noimageavailable.png'
 // import {swipe1} from 'jquery-touchswipe'
 
 export default function PetImage(props) {
-        
+
     return (
         <div id={"draggable_" + props.id} className="petImage">
-            {getImagePath()}  
+            {getImagePath()}
         </div>
     )
 
-    function getImagePath(){
+    function getImagePath() {
         let container = "draggable_" + props.id;
         let images = props.images;
         let imageArray = []
 
-        if(images != null){
-            for(let i = 0; i < images.length; i++){
+        if (images != null) {
+            for (let i = 0; i < images.length; i++) {
                 imageArray.push(<li key={"key_" + props.id + "[" + i + "]"}><img src={images[i]} alt="" draggable="false" /></li>)
             }
             return <ul id={"scroll_" + container}>{imageArray}</ul>;
-        }else{
+        } else {
             return <img src={NoImage} alt="" draggable="false" />;
         }
     }

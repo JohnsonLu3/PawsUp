@@ -16,9 +16,9 @@ class Frame extends React.Component {
     }
 
     componentDidMount() {
-        this.setState( (prevState) =>({
-            draggableElement : ReactDOM.findDOMNode(this),
-            petId : this.props.petId
+        this.setState((prevState) => ({
+            draggableElement: ReactDOM.findDOMNode(this),
+            petId: this.props.petId
         }));
     }
 
@@ -27,11 +27,11 @@ class Frame extends React.Component {
         let petModel = this.props.petModel;
         let id = this.state.petId;
         let delay = this.props.delay;
-        delay = {animationDelay :  delay + "s"};
+        delay = { animationDelay: delay + "s" };
         const { pass, add } = this.props;
-        
+
         return (
-            <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag.bind(this)} >
+            <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag} >
                 <div style={delay} className="frame">
                     <div className="slideIconContainer">
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
@@ -39,14 +39,14 @@ class Frame extends React.Component {
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
                         <PetImage id={petModel.id} images={petModel.images} />
                         <Description pet={petModel} />
-                        <Controls pet={petModel} add={add} pass={pass}  />
+                        <Controls pet={petModel} add={add} pass={pass} />
                     </div>
                 </div>
             </Draggable>
         )
     }
 
-    handleDrag() {
+    handleDrag = () => {
         const { pass, add } = this.props;
         let id = this.state.petId;
         let petModel = this.props.petModel;
@@ -62,13 +62,13 @@ class Frame extends React.Component {
             triggerZone = 500;
         } else if (width > 540) {
             triggerZone = 250;
-        } else if(width > 360){
+        } else if (width > 360) {
             triggerZone = 180;
-        }else{
+        } else {
             triggerZone = 160;
         }
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             triggerZone = 140;
         }
 
@@ -84,7 +84,7 @@ class Frame extends React.Component {
             add(petModel);
         }
 
-        $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet/triggerZone)) });
+        $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet / triggerZone)) });
     }
 
     reset() {
