@@ -6,6 +6,11 @@ class HttpController {
     this.setGetReuqest();
   }
 
+  /**
+   * Whats a way I can use the PF api to get pets with out dupes
+   * currently don't see any real solution. Will sit on.
+   */
+
   setGetReuqest = () => {
     this.app.get("/getPets", (req, res) => {
       if (req.query.id) {

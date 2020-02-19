@@ -60,9 +60,9 @@ class Petfinder {
 
   getOrganizations = () => {
     return this.client.organization
-      .search()
+      .search({})
       .then(res => {
-        return res.data.organization;
+        return res.data.organizations;
       })
       .catch(err => {
         throw err;
