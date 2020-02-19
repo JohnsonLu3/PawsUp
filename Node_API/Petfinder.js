@@ -1,6 +1,17 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 class Petfinder {
+
+
+    /****
+     * TODO!!!!!
+     * Adjust api calls from version 1 to version 2
+     * version 2 is a lot cleaner and better in their results sets
+     * it also handles images a lot better
+     * 
+     * But version 2 requires OAuth2
+     * So find a way to generate valid tokens
+     */
 
     constructor(API) {
         this.API = API
@@ -12,50 +23,48 @@ class Petfinder {
     }
 
     getPets() {
-        let url = `${this.prefix}pet.getRandom${this.suffix}&count=${this.limit}&animal=dog`;
+        const url = `${this.prefix}pet.getRandom${this.suffix}&count=${this.limit}&animal=dog`;
         let pets = [];
-        fetch(url)
-            .then(res => res.json())
-            .then(json =>{
-                for(let pet of json.petfinder.pet){
+        axios.get(url)
+            .then(res => {
+                const data = res.data;
+                for (let pet of data.petfinder.pet) {
                     console.log(pet.id.$t)
-                    if(pet.media.photos.photo.length > 0){
+                    if (pet.media.photos.photo.length > 0) {
                         pets.push(pet);
                     }
                 }
             })
-            .catch(err =>{
-                console.log(err);
-            })
+            .catch(err => { throw err })
     }
 
     getPetsByCount(count) {
-        let url = `${this.prefix}animals&limit=${count}`
-        console.log(url)
-        fetch(url)
-            .then(res => res.json())
-            .then(json =>{
-                console.log(json.petfinder.pet)
-            })
-            .catch(err =>{
-                console.log(err);
+        const url = `${this.prefix}animals&limit=${count}`
+        axios.get(url)
+            .then(res => {
+                const data = res.data;
+                // TO DO
             })
     }
 
-    getPetById(){
-        let url = this.prefix + "pet.find&count=25&animal=dog&" + this.suffix;
-    }
-
-
-    testAPICall() {
-        fetch(this.testMethod)
-            .then(res => res.json())
-            .then(json => {
-                console.log(json);
+    getPetById(id) {
+        const url = ``
+        axios.get(url)
+            .then( res=>{
+                const data = res.data;
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => { throw err })
     }
+
+    // Old Test call for Version 1
+    // testAPICall() {
+    //     express(this.testMethod)
+    //         .then(res => {
+    //             console.log(res.data);
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }
 }
 module.exports = Petfinder
