@@ -11,17 +11,27 @@ class Petfinder {
       secret: this.clientSecret
     });
 
-    console.log(this.clientId)
-    console.log(this.clientSecret)
+    this.getDogs()
+  }
 
-    this.client.animal
-      .search()
-      .then(function(response) {
-        console.log(response.data.animals);
+  getDogs = () =>{
+    return this.client.animal
+      .search({type: "Dog", limit: this.limit})
+      .then( response => {
+        let dogs = response.data.animals;
+        return dogs;
       })
-      .catch(function(err) {
+      .catch( err =>{
         throw err
       });
+  }
+
+  removeNonPictured = (dogs) =>{
+    for(let i = 0; i < dogs.length; i++){
+        if(dogs[i].photos.length === 0){
+          console.log(dogs[i].id)
+        }
+    }
   }
 
 }
