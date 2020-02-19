@@ -40,11 +40,43 @@ class Petfinder {
     return this.client.animal
       .show(id)
       .then(res => {
-        console.log(res.data.animal);
         return res.data.animal;
       })
       .catch(err => {
+        return `No pet Found by id: ${id}`;
+      });
+  };
+
+  getDogPhotosById = id => {
+    return this.client.animal
+      .show(id)
+      .then(res => {
+        return res.data.animal.photos;
+      })
+      .catch(err => {
+        return `No pet Found by id: ${id}`;
+      });
+  };
+
+  getOrganizations = () => {
+    return this.client.organization
+      .search()
+      .then(res => {
+        return res.data.organization;
+      })
+      .catch(err => {
         throw err;
+      });
+  };
+
+  getOrganizationByID = id => {
+    return this.client.organization
+      .show(id)
+      .then(res => {
+        return res.data.organization;
+      })
+      .catch(err => {
+        return `No organization Found by id: ${id}`;
       });
   };
 

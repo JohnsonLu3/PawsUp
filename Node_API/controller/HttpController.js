@@ -18,6 +18,27 @@ class HttpController {
         });
       }
     });
+
+    this.app.get("/getPetPhotos", (req, res) => {
+      if (req.query.id) {
+        pf.getDogPhotosById(req.query.id).then(result => {
+          res.send(result);
+        });
+      } else {
+        res.send("please prove id, ie: /getPetPhotos?id=XXXXXX");
+      }
+    });
+    this.app.get("/getOrganization", (req, res) => {
+      if (req.query.id) {
+        pf.getOrganizationByID(req.query.id).then(result => {
+          res.send(result);
+        });
+      } else {
+        pf.getOrganizations().then(result => {
+          res.send(result);
+        });
+      }
+    });
   };
 }
 module.exports = HttpController;
