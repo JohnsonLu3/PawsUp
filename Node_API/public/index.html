@@ -6,6 +6,33 @@
 <ul>
   <li>
     <a href="http://localhost:5000/getPets"><em>/getPets</em></a>
+    <div>
+      filters
+      <ul>
+        <li>
+          age*: baby, young, adult, senior,
+        </li>
+        <li>
+          gender: male, female,
+        </li>
+        <li>
+          size*: small, medium, large, xlarge,
+        </li>
+        <li>
+          spayed_neutered: req.query.spayed_neutered,
+        </li>
+        <li>
+          house_trained: Can be true, false, 1, or 0
+        </li>
+        <li>
+          shots_current: Can be true, false, 1, or 0
+        </li>
+        <li>
+          location: postal code
+        </li>
+      </ul>
+      <em>*Accepts multiple values</em>
+    </div>
   </li>
   <li>
     <a href="http://localhost:5000/getPets?id=47420577">

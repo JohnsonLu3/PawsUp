@@ -24,7 +24,8 @@ class HttpController {
           size: req.query.size,
           spayed_neutered: req.query.spayed_neutered,
           house_trained: req.query.house_trained,
-          shots_current: req.query.shots_current
+          shots_current: req.query.shots_current,
+          location: req.query.location
         };
 
         pf.getDogs(filters).then(result => {
