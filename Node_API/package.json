@@ -16,6 +16,7 @@
   "author": "Johnson Lu",
   "license": "ISC",
   "dependencies": {
+    "@petfinder/petfinder-js": "^1.0.6",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
     "simple-oauth2": "^3.3.0"
