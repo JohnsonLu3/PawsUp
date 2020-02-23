@@ -8,11 +8,10 @@ export default class InfoModal extends React.Component {
 
     render() {
 
-        if (this.props.pets.length === 0) {
+        if (this.props.pet == null) {
             return <span></span>;
         } else {
-            let pet = this.props.pets[this.props.pets.length - 1]
-
+            let pet = this.props.pet
             return (
                 <div id="enlargedImage" className="modal hide-modal">
                     <div className="modalBody">

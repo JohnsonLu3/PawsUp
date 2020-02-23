@@ -19,17 +19,17 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    this.getPets();
     this.setState((prevState, props) => ({
       watchList: props.watchList
     }));
+    this.getPets();
   }
 
   render() {
     return (
       <main>
         {this.getFrames()}
-        <InfoModal pets={this.state.pets} isOpen="false" />
+        <InfoModal pet={this.state.pets[this.state.pets.length - 1]} isOpen="false" />
         <div id="backgroundImage"></div>
       </main>
     )
@@ -37,15 +37,17 @@ class Main extends React.Component {
 
   getPets = () => {
     let testData = this.state.rawData;
-    let temp = this.state;
+    let temp = []
+    const watchList = this.props.watchList;
 
     for (let i = 0; i < testData.length; i++) {
       let pet = new Pet(testData[i]);
-      temp.pets.push(pet);
+      if (!watchList.has(pet.id))
+        temp.push(pet);
     }
 
     this.setState((prevState, props) => ({
-      pets: temp.pets
+      pets: temp
     }));
   }
 
