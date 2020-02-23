@@ -12,6 +12,7 @@ class HttpController {
    */
 
   setGetReuqest = () => {
+
     this.app.get("/getPets", (req, res) => {
       if (req.query.id) {
         pf.getDogByID(req.query.id).then(result => {
@@ -25,7 +26,8 @@ class HttpController {
           spayed_neutered: req.query.spayed_neutered,
           house_trained: req.query.house_trained,
           shots_current: req.query.shots_current,
-          location: req.query.location
+          location: req.query.location,
+          page: req.query.page
         };
 
         pf.getDogs(filters).then(result => {
@@ -43,6 +45,7 @@ class HttpController {
         res.send("please prove id, ie: /getPetPhotos?id=XXXXXX");
       }
     });
+
     this.app.get("/getOrganization", (req, res) => {
       if (req.query.id) {
         pf.getOrganizationByID(req.query.id).then(result => {

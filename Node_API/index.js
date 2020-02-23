@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 5000;
+const config = require("./config")
+
+const PORT = config.port;
 
 const app = express();
 app.listen(PORT, () => {

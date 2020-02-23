@@ -1,14 +1,14 @@
 const axios = require("axios");
-var petfinder = require("@petfinder/petfinder-js");
+const config = require("../config")
+const petfinder = require("@petfinder/petfinder-js");
 
 class Petfinder {
   constructor() {
-    this.clientId = process.env.API_PETFINDER;
-    this.clientSecret = process.env.API_PETFINDER_SECRET;
+
     this.limit = 25;
     this.client = new petfinder.Client({
-      apiKey: this.clientId,
-      secret: this.clientSecret
+      apiKey: config.clientId,
+      secret: config.clientSecret
     });
 
     this.getDogs();
@@ -23,6 +23,11 @@ class Petfinder {
         return res.data.animals;
       })
       .catch(err => {
+        if (err.code === 500) {
+          const errMessage = 'unable to fetch pets';
+          console.error(errMessage);
+          return errMessage;
+        }
         throw err;
       });
   };
