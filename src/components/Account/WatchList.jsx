@@ -1,5 +1,7 @@
 import React from 'react'
 import '../../scss/WatchList.scss'
+import NoImage from '../../image/noimageavailable.png'
+
 export default class WatchList extends React.Component {
 
     state = {
@@ -26,7 +28,7 @@ export default class WatchList extends React.Component {
             for (let [key, value] of watchList) {
                 list.push(
                     <li key={"key_" + value.id} className="watchlist-Card light-shadow">
-                        <span><img src={value.images[0]} alt={"picture of" + value.name} /></span>
+                        <span><img src={value.images[0]} alt={"picture of" + value.name} onError={(e) => { e.target.src = NoImage }} /></span>
                         <span>
                             <div><h2><a href={value.link} target="_blank" rel="noopener noreferrer">{value.name}</a></h2></div>
                             <div>{value.age}</div>

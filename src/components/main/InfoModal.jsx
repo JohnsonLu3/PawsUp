@@ -20,7 +20,7 @@ export default class InfoModal extends React.Component {
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
                         <div className="profile">
-                            <div className="profileImage"><img src={pet.images[0]} alt="Rubble" /></div>
+                            <div className="profileImage"><img src={pet.images[0]} alt={pet.name + " picture"} /></div>
                             <div className="bio">
                                 <h2>
                                     <a href={pet.link} target="_blank" rel="noopener noreferrer">

@@ -5,7 +5,7 @@ import InfoModal from './InfoModal'
 import API from '../../Api'
 import TestData from '../test/TestPets'
 import Pet from '../../model/Pet';
-
+import Axios from "axios";
 class Main extends React.Component {
 
   state = {
@@ -15,14 +15,15 @@ class Main extends React.Component {
     items: [],
     rawData: new TestData().getTestPets().animals,
     pets: [],
-    watchList: new Map()
+    watchList: new Map(),
+    page: 1
   };
 
   componentDidMount() {
     this.setState((prevState, props) => ({
       watchList: props.watchList
     }));
-    this.getPets();
+    this.getPetsFromAPI();
   }
 
   render() {
@@ -35,7 +36,27 @@ class Main extends React.Component {
     )
   }
 
-  getPets = () => {
+  getPetsFromAPI = () => {
+    let temp = []
+    const watchList = this.props.watchList;
+
+    Axios.get(`/getPets?page=${this.state.page}`)
+      .then(res => {
+        const data = res.data;
+        console.log(data)
+        for (let i = 0; i < data.length; i++) {
+          let pet = new Pet(data[i]);
+          if (!watchList.has(pet.id))
+            temp.push(pet);
+        }
+        this.setState((prevState, props) => ({
+          pets: temp
+        }));
+      })
+      .catch(err => { throw err });
+  }
+
+  getPetsTest = () => {
     let testData = this.state.rawData;
     let temp = []
     const watchList = this.props.watchList;
