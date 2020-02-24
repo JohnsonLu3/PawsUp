@@ -1,4 +1,3 @@
-const axios = require("axios");
 const config = require("../config")
 const petfinder = require("@petfinder/petfinder-js");
 
@@ -10,70 +9,52 @@ class Petfinder {
       apiKey: config.clientId,
       secret: config.clientSecret
     });
-
-    this.getDogs();
   }
 
-  getDogs = filter => {
+  getDogs = async filter => {
     filter = { ...filter, ...{ type: "Dog", limit: this.limit } };
-
-    return this.client.animal
-      .search(filter)
-      .then(res => {
-        return res.data.animals;
-      })
-      .catch(err => {
-        if (err.code === 500) {
-          const errMessage = 'unable to fetch pets';
-          console.error(errMessage);
-          return errMessage;
-        }
-        throw err;
-      });
+    try {
+      const res = await this.client.animal.search(filter)
+      return res.data.animals;
+    } catch (err) {
+      throw err;
+    }
   };
 
-  getDogByID = id => {
-    return this.client.animal
-      .show(id)
-      .then(res => {
-        return res.data.animal;
-      })
-      .catch(err => {
-        return `No pet Found by id: ${id}`;
-      });
+  getDogByID = async id => {
+    try {
+      const res = await this.client.animal.show(id)
+      return res.data.animal;
+    } catch (err) {
+      return `No pet Found by id: ${id}`;
+    }
   };
 
-  getDogPhotosById = id => {
-    return this.client.animal
-      .show(id)
-      .then(res => {
-        return res.data.animal.photos;
-      })
-      .catch(err => {
-        return `No pet Found by id: ${id}`;
-      });
+  getDogPhotosById = async id => {
+    try {
+      const res = await this.client.animal.show(id);
+      return res.data.animal.photos;
+    } catch (err) {
+      return `No pet Found by id: ${id}`;
+    }
   };
 
-  getOrganizations = () => {
-    return this.client.organization
-      .search({})
-      .then(res => {
-        return res.data.organizations;
-      })
-      .catch(err => {
-        throw err;
-      });
+  getOrganizations = async () => {
+    try {
+      const res = await this.client.organization.search({})
+      return res.data.organizations;
+    } catch (err) {
+      throw err;
+    }
   };
 
-  getOrganizationByID = id => {
-    return this.client.organization
-      .show(id)
-      .then(res => {
-        return res.data.organization;
-      })
-      .catch(err => {
-        return `No organization Found by id: ${id}`;
-      });
+  getOrganizationByID = async id => {
+    try {
+      const res = this.client.organization.show(id)
+      return res.data.organization;
+    } catch (err) {
+      return `No organization Found by id: ${id}`;
+    }
   };
 
   removeNonPictured = dogs => {

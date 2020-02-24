@@ -13,11 +13,15 @@ class HttpController {
 
   setGetReuqest = () => {
 
-    this.app.get("/getPets", (req, res) => {
+    this.app.get("/getPets", async (req, res) => {
       if (req.query.id) {
-        pf.getDogByID(req.query.id).then(result => {
+        try {
+          const result = await pf.getDogByID(req.query.id)
           res.send(result);
-        });
+        } catch (err) {
+          throw err;
+        }
+
       } else {
         const filters = {
           age: req.query.age,
@@ -29,32 +33,43 @@ class HttpController {
           location: req.query.location,
           page: req.query.page
         };
-
-        pf.getDogs(filters).then(result => {
+        try {
+          const result = await pf.getDogs(filters)
           res.send(result);
-        });
+        } catch (err) {
+          throw err;
+        }
       }
     });
 
-    this.app.get("/getPetPhotos", (req, res) => {
+    this.app.get("/getPetPhotos", async (req, res) => {
       if (req.query.id) {
-        pf.getDogPhotosById(req.query.id).then(result => {
+        try {
+          const result = await pf.getDogPhotosById(req.query.id)
           res.send(result);
-        });
+        } catch (err) {
+          throw err;
+        }
       } else {
         res.send("please prove id, ie: /getPetPhotos?id=XXXXXX");
       }
     });
 
-    this.app.get("/getOrganization", (req, res) => {
+    this.app.get("/getOrganization", async (req, res) => {
       if (req.query.id) {
-        pf.getOrganizationByID(req.query.id).then(result => {
+        try {
+          const result = await pf.getOrganizationByID(req.query.id)
           res.send(result);
-        });
+        } catch (err) {
+          throw err
+        }
       } else {
-        pf.getOrganizations().then(result => {
+        try {
+          const result = pf.getOrganizations()
           res.send(result);
-        });
+        } catch (err) {
+          throw err
+        }
       }
     });
   };
