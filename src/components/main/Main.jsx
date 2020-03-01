@@ -10,13 +10,13 @@ class Main extends React.Component {
 
   state = {
     api: new API(),
-    error: null,
+    error: false,
     isLoaded: false,
     items: [],
     rawData: new TestData().getTestPets().animals,
     pets: [],
     watchList: new Map(),
-    page: 1
+    page: 1,
   };
 
   componentDidMount() {
@@ -29,6 +29,11 @@ class Main extends React.Component {
   render() {
     return (
       <main>
+        {
+          this.state.error === true ?
+            <div className="errorMessage">Could Not Connect To Server, Using Test Data</div>
+            : null
+        }
         {this.getFrames()}
         <InfoModal pet={this.state.pets[this.state.pets.length - 1]} isOpen="false" />
         <div id="backgroundImage"></div>
@@ -42,6 +47,9 @@ class Main extends React.Component {
 
     Axios.get(`/getPets?page=${this.state.page}`)
       .then(res => {
+        this.setState({
+          error: false
+        })
         const data = res.data;
         console.log(data)
         for (let i = 0; i < data.length; i++) {
@@ -53,7 +61,12 @@ class Main extends React.Component {
           pets: temp
         }));
       })
-      .catch(err => { throw err });
+      .catch(err => {
+        this.setState({
+          error: true
+        })
+        this.getPetsTest();
+      });
   }
 
   getPetsTest = () => {

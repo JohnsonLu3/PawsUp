@@ -32,7 +32,7 @@ main {
   box-shadow: 10px 10px 13px -1px rgba(0, 0, 0, 0.09);
 }
 
-.light-shadow{
+.light-shadow {
   -webkit-box-shadow: 6px 5px 5px -1px rgba(0, 0, 0, 0.01);
   -moz-box-shadow: 6px 5px 5px -1px rgba(0, 0, 0, 0.01);
   box-shadow: 6px 5px 5px -1px rgba(0, 0, 0, 0.01);
@@ -44,6 +44,29 @@ main {
   z-index: 4;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.623);
+}
+
+.errorMessage {
+  position: absolute;
+  z-index: 3;
+  top: 80px;
+  background-color: rgba(255, 0, 0, 0.75);
+  padding: 5px 15px;
+  color: white;
+  border-radius: 15px;
+  opacity: 0;
+  animation: fall-in 0.5s ease-in 0.25s forwards;
+}
+
+@keyframes fall-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 button:hover {
