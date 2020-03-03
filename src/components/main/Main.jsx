@@ -31,7 +31,7 @@ class Main extends React.Component {
       <main>
         {
           this.state.error === true ?
-            <div className="errorMessage">Could Not Connect To Server, Using Test Data</div>
+            <div className="errorMessage">Server Currently Not Available, Using Test Data</div>
             : null
         }
         {this.getFrames()}
