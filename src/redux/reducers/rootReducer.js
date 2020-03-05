@@ -1,8 +1,8 @@
-import { combineReducer } from "redux"
+import { combineReducers } from "redux"
 import passListReducer from "./passListReducer"
 import watchListReducer from "./watchListReducer"
 
-const rootReducer = combineReducer({
+const rootReducer = combineReducers({
     passList: passListReducer,
     watchList: watchListReducer
 })

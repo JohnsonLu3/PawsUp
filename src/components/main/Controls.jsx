@@ -5,21 +5,21 @@ import $ from 'jquery'
 
 export default function Controls(props) {
 
-    const {pet, add, pass} = props;
+    const { pet, add, pass } = props;
 
     return (
         <div className="controls">
-            <button className="pass" title="Pass">
+            <button onClick={() => { pass(pet.id) }} className="pass" title="Pass">
                 <span className="sr">Pass</span>
-                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={()=>{pass(pet.id)}} />
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} />
             </button>
-            <button className="more" title="View Larger Image">
-            <span className="sr">Learn More</span>
-                <FontAwesomeIcon className="brandIcon" icon={faEllipsisH} onClick={enlarge.bind(this)} />
+            <button onClick={enlarge.bind(this)} className="more" title="View Larger Image">
+                <span className="sr">Learn More</span>
+                <FontAwesomeIcon className="brandIcon" icon={faEllipsisH} />
             </button>
-            <button className="add" title="Add To Watch List">
-            <span className="sr">Add to Watch List</span>
-                <FontAwesomeIcon className="brandIcon" icon={faPaw} onClick={()=>{add(pet)}} />
+            <button onClick={() => { add(pet) }} className="add" title="Add To Watch List">
+                <span className="sr">Add to Watch List</span>
+                <FontAwesomeIcon className="brandIcon" icon={faPaw} />
             </button>
         </div>
     )

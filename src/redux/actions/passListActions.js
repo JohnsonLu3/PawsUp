@@ -1,9 +1,10 @@
 
-export const addtoPass = (id) => {
+export const addtoPass = (id, pet) => {
     return ({
         type: "ADD_TO_PASS",
         payload: {
-            id: id
+            id: id,
+            pet: pet
         }
     })
 }

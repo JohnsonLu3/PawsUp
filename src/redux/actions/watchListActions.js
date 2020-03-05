@@ -1,18 +1,20 @@
 
-export const addtoWatch = (id) => {
+export const addtoWatch = (id, pet) => {
     return ({
         type: "ADD_TO_WATCH",
         payload: {
-            id: id
+            id: id,
+            pet: pet
         }
     })
 }
 
-export const removeFromWatch = (id) => {
+export const removeFromWatch = (id, pet) => {
     return ({
         type: "REMOVE_FROM_WATCH",
         payload: {
-            id: id
+            id: id,
+            pet: pet
         }
     })
 }
