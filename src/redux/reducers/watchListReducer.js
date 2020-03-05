@@ -1,5 +1,5 @@
 
-const watchListReducer = (watchList = new Map(), action) => {
+const watchListReducer = (watchList = [], action) => {
     switch (action.type) {
         case "ADD_TO_WATCH":
             return [

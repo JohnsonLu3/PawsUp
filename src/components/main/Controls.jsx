@@ -2,8 +2,11 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
+import { connect } from 'react-redux'
+import { addtoWatch } from '../../redux/actions/watchListActions'
+import { addtoPass } from '../../redux/actions/passListActions'
 
-export default function Controls(props) {
+function Controls(props) {
 
     const { pet, add, pass } = props;
 
@@ -30,3 +33,27 @@ function enlarge() {
     $(modal).removeClass("hide-modal")
     $("#dim").removeClass("hide");
 }
+
+const mapStateToProps = state => {
+    return {
+        passList: state.passList,
+        watchList: state.watchList
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return ({
+        addToWatchList: (id, pet) => {
+            dispatch(
+                addtoWatch(id, pet)
+            )
+        },
+        addToPassList: (id, pet) => {
+            dispatch(
+                addtoPass(id, pet)
+            )
+        }
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controls)
