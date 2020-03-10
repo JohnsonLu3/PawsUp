@@ -89,7 +89,7 @@ class Main extends React.Component {
       return (
         <div id="NoPetsFound">
           <p>Theres no more pets!</p>
-          <a href="https://www.petfinder.com/">Please video Petfinder for more Pets!</a>
+          <a href="https://www.petfinder.com/">Please visit Petfinder for more Pets!</a>
         </div>
       )
     }
