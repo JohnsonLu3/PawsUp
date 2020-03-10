@@ -3,24 +3,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 import { connect } from 'react-redux'
-import { addtoWatch } from '../../redux/WatchList/watchListActions'
-import { addtoPass } from '../../redux/PassList/passListActions'
+import { addToWatch } from '../../redux/WatchList/watchListActions'
+import { addToPass } from '../../redux/PassList/passListActions'
 
 function Controls(props) {
 
     const { pet, add, pass } = props;
 
+    const addTemp = () => {
+        props.addToWatchList(pet)
+        add(pet)
+    }
+
+    const passTemp = () => {
+        props.addToPassList(pet)
+        pass(pet.id)
+    }
+
     return (
         <div className="controls">
-            <button onClick={() => { pass(pet.id) }} className="pass" title="Pass">
+            <button onClick={passTemp} className="pass" title="Pass">
                 <span className="sr">Pass</span>
                 <FontAwesomeIcon className="brandIcon" icon={faPaw} />
             </button>
-            <button onClick={enlarge.bind(this)} className="more" title="View Larger Image">
+            <button onClick={enlarge} className="more" title="View Larger Image">
                 <span className="sr">Learn More</span>
                 <FontAwesomeIcon className="brandIcon" icon={faEllipsisH} />
             </button>
-            <button onClick={() => { add(pet) }} className="add" title="Add To Watch List">
+            <button onClick={addTemp} className="add" title="Add To Watch List">
                 <span className="sr">Add to Watch List</span>
                 <FontAwesomeIcon className="brandIcon" icon={faPaw} />
             </button>
@@ -28,7 +38,7 @@ function Controls(props) {
     )
 }
 
-function enlarge() {
+const enlarge = () => {
     let modal = document.getElementById("enlargedImage");
     $(modal).removeClass("hide-modal")
     $("#dim").removeClass("hide");
@@ -43,14 +53,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        addToWatchList: (id, pet) => {
+        addToWatchList: (pet) => {
             dispatch(
-                addtoWatch(id, pet)
+                addToWatch(pet)
             )
         },
-        addToPassList: (id, pet) => {
+        addToPassList: (pet) => {
             dispatch(
-                addtoPass(id, pet)
+                addToPass(pet)
             )
         }
     })

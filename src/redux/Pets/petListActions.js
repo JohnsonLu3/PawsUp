@@ -6,7 +6,6 @@ export const removePet = (pet) => {
         payload: pet
     }
 }
-
 export const fetchPetsRequest = () => {
     return {
         type: "FETCH_PETS_REQUEST"
@@ -25,10 +24,10 @@ export const fetchPetsFailure = error => {
         payload: error
     }
 }
-export const fetchPets = () => {
+export const fetchPets = (page = 1) => {
     return (dispatch) => {
         dispatch(fetchPetsRequest())
-        Axios.get(`/getPets?page=1`)
+        Axios.get(`/getPets?page=${page}`)
             .then(res => {
                 dispatch(fetchPetsSuccess(res.data))
             })

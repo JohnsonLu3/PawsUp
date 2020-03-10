@@ -9,6 +9,10 @@ import $ from "jquery"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { fetchPets } from '../../redux/Pets/petListActions'
+import { connect } from 'react-redux'
+import { addToPass } from '../../redux/PassList/passListActions'
+import { addToWatch } from '../../redux/WatchList/watchListActions'
+
 class Frame extends React.Component {
 
     state = {
@@ -59,7 +63,7 @@ class Frame extends React.Component {
         let width = window.innerWidth;
         let offSet = parseInt($(draggableElement).css('transform').split(',')[4]);
         let triggerZone;
-        console.log(offSet + " : " + width)
+
         if (width > 768) {
             triggerZone = 500;
         } else if (width > 540) {
@@ -82,8 +86,10 @@ class Frame extends React.Component {
 
         if (offSet < -triggerZone) {
             pass(id);
+            this.props.addToPass(petModel)
         } else if (offSet > triggerZone) {
             add(petModel);
+            this.props.addToWatch(petModel)
         }
 
         $(frameContent).css({ 'opacity': 1 - (Math.abs(offSet / triggerZone)) });
@@ -96,4 +102,20 @@ class Frame extends React.Component {
         $(frameContent).css({ 'opacity': 1 });
     }
 
-} export default Frame
+}
+
+const mapStateToProps = state => {
+    return ({
+        passList: state.passList,
+        WatchList: state.watchList
+    })
+}
+
+const mapDispatchToProps = dispatch => {
+    return ({
+        addToPass: (pet) => dispatch(addToPass(pet)),
+        addToWatch: (pet) => dispatch(addToWatch(pet))
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Frame)

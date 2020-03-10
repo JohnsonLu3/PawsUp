@@ -7,7 +7,7 @@ const watchListReducer = (watchList = [], action) => {
                 action.payload
             ]
         case "REMOVE_FROM_WATCH":
-            return watchList
+            return watchList.filter(pet => pet.id !== action.payload.id)
         default:
             return watchList
     }

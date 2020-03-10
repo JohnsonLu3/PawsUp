@@ -1,18 +1,17 @@
 import React from 'react'
 import '../../scss/WatchList.scss'
 import NoImage from '../../image/noimageavailable.png'
+import { connect } from 'react-redux'
+import { removeFromWatch } from '../../redux/WatchList/watchListActions'
 
-export default class WatchList extends React.Component {
-
-    state = {
-        watchList: this.props.watchList,
-    }
+class WatchList extends React.Component {
 
     render() {
+        let watchList = this.props.watchList;
         return (
             <main>
                 <div id="watchListBody" className="shadow">
-                    <h1>WatchList <span> [{this.state.watchList.size}]</span></h1>
+                    <h1>WatchList <span> [{watchList.length}]</span></h1>
                     {
                         this.getWatchList()
                     }
@@ -22,18 +21,19 @@ export default class WatchList extends React.Component {
     }
 
     getWatchList() {
-        let watchList = this.state.watchList;
-        if (watchList.size > 0) {
+        //let watchList = this.state.watchList;
+        let watchList = this.props.watchList;
+        if (watchList.length > 0) {
             let list = [];
-            for (let [key, value] of watchList) {
+            for (let pet of watchList) {
                 list.push(
-                    <li key={"key_" + value.id} className="watchlist-Card light-shadow">
-                        <span><img src={value.images[0]} alt={"picture of" + value.name} onError={(e) => { e.target.src = NoImage }} /></span>
+                    <li key={"key_" + pet.id} className="watchlist-Card light-shadow">
+                        <span><img src={pet.images[0]} alt={"picture of" + pet.name} onError={(e) => { e.target.src = NoImage }} /></span>
                         <span>
-                            <div><h2><a href={value.link} target="_blank" rel="noopener noreferrer">{value.name}</a></h2></div>
-                            <div>{value.age}</div>
-                            <div>{value.city}</div>
-                            <div><button onClick={() => this.removePet(key)}>Remove</button></div>
+                            <div><h2><a href={pet.link} target="_blank" rel="noopener noreferrer">{pet.name}</a></h2></div>
+                            <div>{pet.age}</div>
+                            <div>{pet.city}</div>
+                            <div><button onClick={() => this.removePet(pet)}>Remove</button></div>
                         </span>
                     </li>
                 );
@@ -49,12 +49,21 @@ export default class WatchList extends React.Component {
         }
     }
 
-    removePet = (id) => {
-        console.log(id);
-        let tempWatch = this.state.watchList;
-        tempWatch.delete(id);
-        this.setState((prevState, props) => ({
-            watchList: tempWatch
-        }));
+    removePet = (pet) => {
+        this.props.removeFromWatch(pet);
     }
 }
+
+const mapStateToProps = state => {
+    return ({
+        watchList: state.watchList
+    })
+}
+
+const mapDispatchToProps = dispatch => {
+    return ({
+        removeFromWatch: (pet) => { dispatch(removeFromWatch(pet)) }
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WatchList)
