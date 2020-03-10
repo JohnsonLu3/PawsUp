@@ -6,6 +6,9 @@ import API from '../../Api'
 import TestData from '../test/TestPets'
 import Pet from '../../model/Pet';
 import Axios from "axios";
+
+import { fetchPets } from '../../redux/Pets/petListActions'
+
 class Main extends React.Component {
 
   state = {
@@ -24,6 +27,7 @@ class Main extends React.Component {
       watchList: props.watchList
     }));
     this.getPetsFromAPI();
+    fetchPets();
   }
 
   render() {
@@ -51,7 +55,6 @@ class Main extends React.Component {
           error: false
         })
         const data = res.data;
-        console.log(data)
         for (let i = 0; i < data.length; i++) {
           let pet = new Pet(data[i]);
           if (!watchList.has(pet.id))

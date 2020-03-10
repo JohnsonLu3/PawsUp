@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 import { connect } from 'react-redux'
-import { addtoWatch } from '../../redux/actions/watchListActions'
-import { addtoPass } from '../../redux/actions/passListActions'
+import { addtoWatch } from '../../redux/WatchList/watchListActions'
+import { addtoPass } from '../../redux/PassList/passListActions'
 
 function Controls(props) {
 
