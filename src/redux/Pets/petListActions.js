@@ -17,7 +17,6 @@ export const fetchPetsSuccess = pets => {
         payload: pets
     }
 }
-
 export const fetchPetsFailure = error => {
     return {
         type: "FETCH_PETS_FAILURE",

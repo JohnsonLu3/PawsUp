@@ -6,6 +6,11 @@ const passListReducer = (passList = [], action) => {
                 ...passList,
                 action.payload
             ]
+        case "REMOVE_FROM_WATCH":
+            return [
+                ...passList,
+                action.payload
+            ]
         default:
             return passList
     }

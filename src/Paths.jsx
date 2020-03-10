@@ -11,20 +11,19 @@ import {
 } from "react-router-dom";
 
 export default function Paths(props) {
-    const watchList = props.watchList;
     return (
         <Router basename={window.location.basename}>
             <Header />
             <SideMenu />
             <Switch>
                 <Route exact path="/">
-                    <Main watchList={watchList} />
+                    <Main />
                 </Route>
                 <Route exact path="#/login">
                     <Login />
                 </Route>
                 <Route exact path="/watch">
-                    <WatchList watchList={watchList} />
+                    <WatchList />
                 </Route>
             </Switch>
         </Router>

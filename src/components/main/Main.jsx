@@ -17,16 +17,11 @@ class Main extends React.Component {
     items: [],
     rawData: new TestData().getTestPets().animals,
     pets: [],
-    watchList: new Map(),
     page: 1,
   };
 
   componentDidMount() {
-    this.setState((prevState, props) => ({
-      watchList: props.watchList
-    }));
     this.getPetsFromAPI();
-    this.props.fetchPets();
   }
 
   render() {
@@ -46,7 +41,6 @@ class Main extends React.Component {
 
   getPetsFromAPI = () => {
     let temp = []
-    const watchList = this.props.watchList;
 
     Axios.get(`/getPets?page=${this.state.page}`)
       .then(res => {
@@ -56,7 +50,7 @@ class Main extends React.Component {
         const data = res.data;
         for (let i = 0; i < data.length; i++) {
           let pet = new Pet(data[i]);
-          if (!watchList.has(pet.id))
+          if (!this.petSeen(pet))
             temp.push(pet);
         }
         this.setState((prevState, props) => ({
@@ -74,11 +68,10 @@ class Main extends React.Component {
   getPetsTest = () => {
     let testData = this.state.rawData;
     let temp = []
-    const watchList = this.props.watchList;
 
     for (let i = 0; i < testData.length; i++) {
       let pet = new Pet(testData[i]);
-      if (!watchList.has(pet.id))
+      if (!this.petSeen(pet))
         temp.push(pet);
     }
 
@@ -102,15 +95,30 @@ class Main extends React.Component {
 
     for (let i = 0; i < pets.length; i++) {
       let id = pets[i].id;
-      if (!this.state.watchList.has(id)) {
+      if (!this.petSeen(pets[i])) {
         frames.push(<Frame key={"key_" + id} delay={(i + 2) / 10} petId={id} petModel={pets[i]} pass={this.removePetFromList} add={this.addPetToWatchList} />);
       }
     }
     return frames;
   }
 
+  petSeen = (pet) => {
+    const { watchList, passList } = this.props;
+
+    for (let p of watchList) {
+      if (p.id === pet.id) {
+        return true;
+      }
+    }
+    for (let p of passList) {
+      if (p.id === pet.id) {
+        return true;
+      }
+    }
+    return false
+  }
+
   removePetFromList = (id) => {
-    console.log(id + " : removed from queue");
     let temp = this.state.pets;
 
     for (let i = 0; i < temp.length; i++) {
@@ -125,18 +133,14 @@ class Main extends React.Component {
   }
 
   addPetToWatchList = (pet) => {
-    // add pet to watch list
-    let watchList = this.state.watchList;
-    watchList.set(pet.id, pet);
-    this.setState(() => ({
-      watchList: watchList
-    }));
     this.removePetFromList(pet.id)
   }
 }
 const mapStateToProps = state => {
   return {
-    pets: state.pets.data
+    pets: state.pets.data,
+    watchList: state.watchList,
+    passList: state.passList
   }
 }
 
