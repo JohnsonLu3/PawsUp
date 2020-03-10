@@ -22,6 +22,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.getPetsFromAPI();
+    this.props.fetchPets(1);
   }
 
   render() {
@@ -146,7 +147,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPets: () => dispatch(fetchPets())
+    fetchPets: (page) => dispatch(fetchPets(page))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

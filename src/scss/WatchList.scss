@@ -1,63 +1,73 @@
-#watchListBody{
-    padding: 10px;
-    background-color: white;
-    border-radius: 4px;
-    border: none;
-    width: 75%;
-    height: 80%;
+#watchListBody {
+  padding: 10px;
+  background-color: white;
+  border-radius: 2px;
+  border: none;
+  width: 75%;
+  height: 80%;
 
-    h1{
-        margin: 0 5px;
+  h1 {
+    margin: 0 5px;
+  }
+
+  #watchList {
+    list-style: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    max-height: inherit;
+    padding: 20px;
+
+    a {
+      color: black;
+      text-decoration: none;
     }
 
-    #watchList{
-        list-style: none;
-        overflow-y: auto;
-        display: flex;
-        padding: 20px;
-
-        a{
-            color: black;
-            text-decoration: none;
-        }
-
-        a:hover{
-            color: rgb(109, 109, 109);
-            text-decoration: underline;
-        }
-
-        .watchlist-Card{
-            button{
-                margin-top: 15px;
-                width: 100%;
-                color: red;
-                border: none;
-                font-weight: 600;
-                text-align: center;
-                background-color: rgba(0, 0, 0, 0);
-            }
-        }
-
-        li{
-            padding: 10px 20px;
-            background: pink;
-            border-radius: 5px;
-            margin: 5px;
-            height: auto;
-            font-size: 14px;
-            color: rgb(61, 61, 61);
-        }
-
-        h2{
-            margin: 2px 0;
-        }
-
-        li img{
-            height: 75px;
-            width: 75px;
-            border-radius: 50%;
-            margin: auto;
-            display: flex;
-        }
+    a:hover {
+      color: rgb(109, 109, 109);
+      text-decoration: underline;
     }
+
+    .watchlist-Card {
+      button {
+        margin-top: 15px;
+        width: 100%;
+        color: red;
+        border: none;
+        font-weight: 600;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    li {
+      padding: 10px 20px;
+      background: rgb(216, 216, 216);
+      border-radius: 5px;
+      margin: 5px;
+      height: auto;
+      font-size: 14px;
+      color: rgb(61, 61, 61);
+    }
+
+    h2 {
+      margin: 2px 0;
+      font-size: 16px;
+    }
+
+    .petIcon {
+      height: 75px;
+      width: 75px;
+    }
+
+    li img {
+      height: inherit;
+      width: inherit;
+      border-radius: 50%;
+      margin: auto;
+      display: flex;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../scss/Modal.scss'
+import NoImage from '../../image/noimageavailable.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
@@ -20,7 +21,7 @@ export default class InfoModal extends React.Component {
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
                         <div className="profile">
-                            <div className="profileImage"><img src={pet.images[0]} alt={pet.name + " picture"} /></div>
+                            <div className="profileImage"><img src={this.getPetImage(pet)} alt={pet.name + " picture"} /></div>
                             <div className="bio">
                                 <h2>
                                     <a href={pet.link} target="_blank" rel="noopener noreferrer">
@@ -81,6 +82,13 @@ export default class InfoModal extends React.Component {
                     </div>
                 </div>
             )
+        }
+    }
+    getPetImage = (pet) => {
+        if (pet.images[0] == null) {
+            return NoImage;
+        } else {
+            return pet.images[0]
         }
     }
 
