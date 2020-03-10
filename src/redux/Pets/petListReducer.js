@@ -8,11 +8,20 @@ const initalState = {
 
 const petListReducer = (pets = initalState, action) => {
     switch (action.type) {
+        case "ADD_TO_WATCH":
+            return {
+                ...pets,
+                data: pets.data.filter(pet => pet.id !== action.payload.id),
+            }
+        case "ADD_TO_PASS":
+            return {
+                ...pets,
+                data: pets.data.filter(pet => pet.id !== action.payload.id),
+            }
         case "REMOVE_PET":
             return {
-                data: pets.data.filter(pet => pet !== action.payload),
-                loading: false,
-                error: false
+                ...pets,
+                data: pets.data.filter(pet => pet.id !== action.payload.id),
             }
         case "FETCH_PETS_REQUEST":
             return {
