@@ -8,7 +8,7 @@ import Draggable from 'react-draggable';
 import $ from "jquery"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
-
+import { fetchPets } from '../../redux/Pets/petListActions'
 class Frame extends React.Component {
 
     state = {
@@ -20,6 +20,8 @@ class Frame extends React.Component {
             draggableElement: ReactDOM.findDOMNode(this),
             petId: this.props.petId
         }));
+
+        fetchPets(this.props.petModel)
     }
 
     render() {

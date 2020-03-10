@@ -3,12 +3,11 @@ import '../../scss/App.scss';
 import Frame from './Frame'
 import InfoModal from './InfoModal'
 import API from '../../Api'
-import TestData from '../test/TestPets'
+import TestData from '../../test/TestPets'
 import Pet from '../../model/Pet';
 import Axios from "axios";
-
+import { connect } from 'react-redux'
 import { fetchPets } from '../../redux/Pets/petListActions'
-
 class Main extends React.Component {
 
   state = {
@@ -27,7 +26,7 @@ class Main extends React.Component {
       watchList: props.watchList
     }));
     this.getPetsFromAPI();
-    fetchPets();
+    this.props.fetchPets();
   }
 
   render() {
@@ -135,4 +134,15 @@ class Main extends React.Component {
     this.removePetFromList(pet.id)
   }
 }
-export default Main;
+const mapStateToProps = state => {
+  return {
+    pets: state.pets.data
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPets: () => dispatch(fetchPets())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

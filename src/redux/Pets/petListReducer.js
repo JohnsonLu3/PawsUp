@@ -1,30 +1,39 @@
-const petListReducer = (petList = [], action) => {
+import TestData from '../../test/TestPets'
+
+const initalState = {
+    loading: false,
+    data: [],
+    error: ''
+}
+
+const petListReducer = (pets = initalState, action) => {
     switch (action.type) {
-        case "ADD_TO_PET_LIST":
-            return [...petList, action.payload]
-        case "REMOVE_FROM_PET_LIST":
-            return petList.filter(pet => pet !== action.payload)
-        case "FETCH_PETS_REQUEST":
-            console.log("TESTEST")
+        case "REMOVE_PET":
             return {
-                ...petList,
-                loading: true
+                data: pets.data.filter(pet => pet !== action.payload),
+                loading: false,
+                error: false
+            }
+        case "FETCH_PETS_REQUEST":
+            return {
+                data: pets.data,
+                loading: true,
+                error: ''
             }
         case "FETCH_PETS_SUCCESS":
-            console.log("TESTEST")
             return {
                 loading: false,
-                petList: action.payload,
+                data: action.payload,
                 error: ''
             }
         case "FETCH_PETS_FAILURE":
             return {
                 loading: false,
-                petsList: [],
+                data: new TestData().getTestPets().animals,
                 error: action.payload
             }
         default:
-            return petList
+            return pets
     }
 }
 export default petListReducer

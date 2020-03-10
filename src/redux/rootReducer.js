@@ -6,6 +6,6 @@ import petListReducer from "./Pets/petListReducer"
 const rootReducer = combineReducers({
     passList: passListReducer,
     watchList: watchListReducer,
-    petList: petListReducer
+    pets: petListReducer
 })
 export default rootReducer

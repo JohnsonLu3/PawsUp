@@ -1,14 +1,8 @@
 import Axios from 'axios'
-export const addToPetList = (pet) => {
-    return {
-        type: "ADD_TO_PET_LIST",
-        payload: pet
-    }
-}
 
-export const removeFromPetList = (pet) => {
+export const removePet = (pet) => {
     return {
-        type: "REMOVE_FROM_PET_LIST",
+        type: "REMOVE_PET",
         payload: pet
     }
 }
@@ -39,7 +33,7 @@ export const fetchPets = () => {
                 dispatch(fetchPetsSuccess(res.data))
             })
             .catch(err => {
-                throw fetchPetsFailure(err)
+                dispatch(fetchPetsFailure(err))
             })
     }
 }
