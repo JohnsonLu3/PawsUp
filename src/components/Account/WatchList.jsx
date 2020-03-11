@@ -28,9 +28,9 @@ class WatchList extends React.Component {
             for (let pet of watchList) {
                 list.push(
                     <li key={"key_" + pet.id} className="watchlist-Card light-shadow">
-                        <span className="petIcon"><img src={this.getPetImage(pet)} alt={"picture of" + pet.name} /></span>
+                        {this.getPetImage(pet)}
                         <span>
-                            <div><h2><a href={pet.link} target="_blank" rel="noopener noreferrer">{pet.name}</a></h2></div>
+                            <div><h2><a href={pet.url} target="_blank" rel="noopener noreferrer">{pet.name}</a></h2></div>
                             <div>{pet.age}</div>
                             <div>{pet.city}</div>
                             <div><button onClick={() => this.removePet(pet)}>Remove</button></div>
@@ -50,10 +50,20 @@ class WatchList extends React.Component {
     }
 
     getPetImage = (pet) => {
-        if (pet.images[0] == null) {
-            return NoImage;
+
+        if (pet.photos[0] == null) {
+            const style = {
+                backgroundImage: `url(${NoImage})`,
+                backgroundSize: 'cover'
+            }
+            return <span style={style} className="petIcon"></span>
         } else {
-            return pet.images[0]
+            const style = {
+                backgroundImage: `url(${pet.photos[0].full})`,
+                backgroundSize: 'cover'
+            }
+
+            return <span style={style} className="petIcon"></span>
         }
     }
 

@@ -34,7 +34,6 @@ class Frame extends React.Component {
         let id = this.state.petId;
         let delay = this.props.delay;
         delay = { animationDelay: delay + "s" };
-        const { pass, add } = this.props;
 
         return (
             <Draggable axis="x" cancel="img" position={defaultPos} onStop={this.reset.bind(this)} onDrag={this.handleDrag} >
@@ -43,9 +42,9 @@ class Frame extends React.Component {
                         <FontAwesomeIcon className="slideIcon" id={"slideIcon_" + id} icon={faPaw} />
                     </div>
                     <div className="frameContents light-shadow" id={"frameContents_" + id}>
-                        <PetImage id={petModel.id} images={petModel.images} />
+                        <PetImage id={petModel.id} photos={petModel.photos} />
                         <Description pet={petModel} />
-                        <Controls pet={petModel} add={add} pass={pass} />
+                        <Controls pet={petModel} />
                     </div>
                 </div>
             </Draggable>
@@ -53,7 +52,6 @@ class Frame extends React.Component {
     }
 
     handleDrag = () => {
-        const { pass, add } = this.props;
         let id = this.state.petId;
         let petModel = this.props.petModel;
         let draggableElement = this.state.draggableElement;
@@ -85,10 +83,8 @@ class Frame extends React.Component {
         }
 
         if (offSet < -triggerZone) {
-            pass(id);
             this.props.addToPass(petModel)
         } else if (offSet > triggerZone) {
-            add(petModel);
             this.props.addToWatch(petModel)
         }
 

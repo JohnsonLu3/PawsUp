@@ -8,11 +8,10 @@ import $ from 'jquery'
 export default class InfoModal extends React.Component {
 
     render() {
-
-        if (this.props.pet == null) {
+        const pet = this.props.pet
+        if (pet == null) {
             return <span></span>;
         } else {
-            let pet = this.props.pet
             return (
                 <div id="enlargedImage" className="modal hide-modal">
                     <div className="modalBody">
@@ -24,7 +23,7 @@ export default class InfoModal extends React.Component {
                             <div className="profileImage"><img src={this.getPetImage(pet)} alt={pet.name + " picture"} /></div>
                             <div className="bio">
                                 <h2>
-                                    <a href={pet.link} target="_blank" rel="noopener noreferrer">
+                                    <a href={pet.url} target="_blank" rel="noopener noreferrer">
                                         {pet.name}
                                     </a>
                                 </h2>
@@ -39,7 +38,7 @@ export default class InfoModal extends React.Component {
                                     <dd>{pet.gender}</dd>
                                     <span>
                                         <dt>Breed:</dt>
-                                        <dd>{pet.breed.primary}</dd>
+                                        <dd>{pet.breeds.primary}</dd>
                                         <dt>Size:</dt>
                                         <dd>{pet.size}</dd>
                                     </span>
@@ -85,10 +84,10 @@ export default class InfoModal extends React.Component {
         }
     }
     getPetImage = (pet) => {
-        if (pet.images[0] == null) {
+        if (pet.photos[0] == null) {
             return NoImage;
         } else {
-            return pet.images[0]
+            return pet.photos[0].full
         }
     }
 

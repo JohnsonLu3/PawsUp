@@ -8,21 +8,19 @@ import { addToPass } from '../../redux/PassList/passListActions'
 
 function Controls(props) {
 
-    const { pet, add, pass } = props;
+    const { pet } = props;
 
-    const addTemp = () => {
+    const add = () => {
         props.addToWatchList(pet)
-        add(pet)
     }
 
-    const passTemp = () => {
+    const pass = () => {
         props.addToPassList(pet)
-        pass(pet.id)
     }
 
     return (
         <div className="controls">
-            <button onClick={passTemp} className="pass" title="Pass">
+            <button onClick={pass} className="pass" title="Pass">
                 <span className="sr">Pass</span>
                 <FontAwesomeIcon className="brandIcon" icon={faPaw} />
             </button>
@@ -30,7 +28,7 @@ function Controls(props) {
                 <span className="sr">Learn More</span>
                 <FontAwesomeIcon className="brandIcon" icon={faEllipsisH} />
             </button>
-            <button onClick={addTemp} className="add" title="Add To Watch List">
+            <button onClick={add} className="add" title="Add To Watch List">
                 <span className="sr">Add to Watch List</span>
                 <FontAwesomeIcon className="brandIcon" icon={faPaw} />
             </button>

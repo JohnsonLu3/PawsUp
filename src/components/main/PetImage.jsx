@@ -12,12 +12,12 @@ export default function PetImage(props) {
 
     function getImagePath() {
         let container = "draggable_" + props.id;
-        let images = props.images;
+        let photos = props.photos;
         let imageArray = []
 
-        if (images.length > 0) {
-            for (let i = 0; i < images.length; i++) {
-                imageArray.push(<li key={"key_" + props.id + "[" + i + "]"}><img src={images[i]} alt="" draggable="false" /></li>)
+        if (photos.length > 0) {
+            for (let i = 0; i < photos.length; i++) {
+                imageArray.push(<li key={"key_" + props.id + "[" + i + "]"}><img src={photos[i].full} alt="" draggable="false" /></li>)
             }
             return <ul id={"scroll_" + container}>{imageArray}</ul>;
         } else {

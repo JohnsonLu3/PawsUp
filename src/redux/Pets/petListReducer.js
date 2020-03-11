@@ -3,7 +3,8 @@ import TestData from '../../test/TestPets'
 const initalState = {
     loading: false,
     data: [],
-    error: ''
+    error: '',
+    page: 1
 }
 
 const petListReducer = (pets = initalState, action) => {
@@ -40,6 +41,11 @@ const petListReducer = (pets = initalState, action) => {
                 loading: false,
                 data: new TestData().getTestPets().animals,
                 error: action.payload
+            }
+        case "INCREMENT_PAGE":
+            return {
+                ...pets,
+                page: pets.page + 1
             }
         default:
             return pets
