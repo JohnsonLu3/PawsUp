@@ -54,13 +54,13 @@ class WatchList extends React.Component {
         if (pet.photos[0] == null) {
             const style = {
                 backgroundImage: `url(${NoImage})`,
-                backgroundSize: 'cover'
+                backgroundSize: 'contain'
             }
             return <span style={style} className="petIcon"></span>
         } else {
             const style = {
                 backgroundImage: `url(${pet.photos[0].full})`,
-                backgroundSize: 'cover'
+                backgroundSize: 'contain'
             }
 
             return <span style={style} className="petIcon"></span>
