@@ -47,6 +47,12 @@ export default class SideMenu extends React.Component {
                         <li>
                             <Link to={this.goToWatchList}><span id="watchList">View Watch List</span></Link>
                         </li>
+                        <li>
+                            <button onClick={this.resetState}>
+                                <span id="reset">Reset</span>
+                                <span className="sr">Page will refresh on reset</span>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -82,5 +88,10 @@ export default class SideMenu extends React.Component {
             lat: lat,
             long: long
         }));
+    }
+
+    resetState = () => {
+        localStorage.removeItem('state');
+        window.location.reload(false);
     }
 }

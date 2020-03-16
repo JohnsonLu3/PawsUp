@@ -49,9 +49,18 @@
   padding: 2rem 4rem;
   text-align: center;
 
+  p {
+    margin: 5px 0;
+  }
+
   a {
     font-weight: 400;
     font-size: 0.7em;
+  }
+
+  em {
+    font-size: 12px;
+    font-weight: 400;
   }
 }
 
