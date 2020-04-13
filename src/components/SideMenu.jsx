@@ -54,6 +54,56 @@ export default class SideMenu extends React.Component {
                             </button>
                         </li>
                     </ul>
+
+                    <section>
+                        <h2>Filters</h2>
+                        <ul>
+                            <li>
+                                <label htmlFor="fltr_age">Age</label>
+                                <select id="fltr_age">
+                                    <option value="young">Young</option>
+                                    <option value="adult">Adult</option>
+                                    <option value="senior">Senior</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label htmlFor="fltr_gender">Gender</label>
+                                <select id="fltr_gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label htmlFor="fltr_size">Size</label>
+                                <select id="fltr_size">
+                                    <option value="small">small</option>
+                                    <option value="mediun">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label htmlFor="fltr_spayed">Spayed/Neutered</label>
+                                <select id="fltr_spayed">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label htmlFor="fltr_trained">House Trained</label>
+                                <select id="fltr_trained">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label htmlFor="fltr_shots">Shots Current</label>
+                                <select id="fltr_shots">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
             </div>
         )
