@@ -57,7 +57,7 @@ export default class SideMenu extends React.Component {
 
                     <section>
                         <h2>Filters</h2>
-                        <ul>
+                        <ul id="side_filters">
                             <li>
                                 <label htmlFor="fltr_age">Age</label>
                                 <select id="fltr_age">

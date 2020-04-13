@@ -9,6 +9,7 @@
   width: 100%;
   max-width: 25%;
   right: 0;
+  overflow-y: auto;
 
   a {
     text-decoration: none;
@@ -39,7 +40,7 @@
   }
 
   .leaflet-container {
-    height: 400px;
+    height: 250px;
     width: 100%;
     margin: 0 auto;
   }
@@ -83,10 +84,25 @@
   }
 
   #map {
-    height: 250px;
+    height: 200px;
     border-style: solid;
     border-color: rgb(218, 218, 218);
     border-radius: 5px;
+  }
+
+  #side_filters {
+    li {
+      display: flex;
+      justify-content: space-evenly;
+      position: relative;
+      label {
+        width: 50%;
+      }
+      select {
+        padding: 5px;
+        width: 50%;
+      }
+    }
   }
 }
 
