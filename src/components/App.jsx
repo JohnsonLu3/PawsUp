@@ -8,17 +8,13 @@ import store from '../redux/store'
 
 export default class App extends React.Component {
 
-  state = {
-    watchList: new Map()
-  }
-
   render() {
     return (
       <Provider store={store}>
         <div className="App">
           <div id="dim" className="hide"></div>
 
-          <Paths watchList={this.state.watchList} />
+          <Paths />
           <CornerRibbon />
           <Footer />
         </div>

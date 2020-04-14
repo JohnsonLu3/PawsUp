@@ -3,7 +3,6 @@ import '../../scss/App.scss';
 import Frame from './Frame'
 import InfoModal from './InfoModal'
 import Pet from '../../model/Pet';
-import Axios from "axios";
 import { connect } from 'react-redux'
 import { fetchPets } from '../../redux/Pets/petListActions'
 class Main extends React.Component {

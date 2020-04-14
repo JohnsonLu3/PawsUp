@@ -1,9 +1,9 @@
 import React from 'react'
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
-
+import { connect } from 'react-redux'
 import '../scss/SideMenu.scss'
 
-export class MapContainer extends React.Component {
+class MapContainer extends React.Component {
 
 
     constructor(props) {
@@ -16,7 +16,7 @@ export class MapContainer extends React.Component {
     }
 
     render() {
-        const position = [40.7128, -74.0060]
+        const position = [this.props.lat, this.props.long]
         return (
             <section>
                 <LeafletMap ref={this.mapRef} className="lf_map" animate="true" center={position} zoom={13}>
@@ -30,4 +30,17 @@ export class MapContainer extends React.Component {
             </section>
         );
     }
-} export default (MapContainer);
+}
+
+const mapStateToProps = state => {
+    return {
+        lat: state.utils.lat,
+        long: state.utils.long
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);
