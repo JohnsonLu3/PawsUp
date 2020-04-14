@@ -107,6 +107,19 @@
   }
 }
 
+#filter_btn {
+  padding: 8px;
+  width: 100%;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  background-color: #145eff;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  display: flex;
+}
+
 .close {
   right: -30% !important;
   visibility: hidden;

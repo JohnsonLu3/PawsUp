@@ -55,48 +55,58 @@ class SideMenu extends React.Component {
                             <li>
                                 <label htmlFor="fltr_age">Age</label>
                                 <select id="fltr_age">
-                                    <option value="young">Young</option>
-                                    <option value="adult">Adult</option>
-                                    <option value="senior">Senior</option>
+                                    <option value="age_any">Any</option>
+                                    <option value="age_young">Young</option>
+                                    <option value="age_adult">Adult</option>
+                                    <option value="age_senior">Senior</option>
                                 </select>
                             </li>
                             <li>
                                 <label htmlFor="fltr_gender">Gender</label>
                                 <select id="fltr_gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="gender_any">Any</option>
+                                    <option value="gender_male">Male</option>
+                                    <option value="gender_female">Female</option>
                                 </select>
                             </li>
                             <li>
                                 <label htmlFor="fltr_size">Size</label>
                                 <select id="fltr_size">
-                                    <option value="small">small</option>
-                                    <option value="mediun">Medium</option>
-                                    <option value="large">Large</option>
+                                    <option value="size_any">Any</option>
+                                    <option value="size_small">Small</option>
+                                    <option value="size_medium">Medium</option>
+                                    <option value="size_large">Large</option>
                                 </select>
                             </li>
                             <li>
                                 <label htmlFor="fltr_spayed">Spayed/Neutered</label>
                                 <select id="fltr_spayed">
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="spayed_any">Any</option>
+                                    <option value="spayed_yes">Yes</option>
+                                    <option value="spayed_no">No</option>
                                 </select>
                             </li>
                             <li>
                                 <label htmlFor="fltr_trained">House Trained</label>
                                 <select id="fltr_trained">
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="trained_any">Any</option>
+                                    <option value="trained_yes">Yes</option>
+                                    <option value="trained_no">No</option>
                                 </select>
                             </li>
                             <li>
                                 <label htmlFor="fltr_shots">Shots Current</label>
                                 <select id="fltr_shots">
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="shots_any">Any</option>
+                                    <option value="shots_yes">Yes</option>
+                                    <option value="shots_no">No</option>
                                 </select>
                             </li>
                         </ul>
+
+                        <button id="filter_btn">
+                            Search By Filters
+                        </button>
                     </section>
                 </div>
             </div>
