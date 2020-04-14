@@ -28,13 +28,13 @@ const petListReducer = (pets = initalState, action) => {
             return {
                 data: pets.data,
                 loading: true,
-                error: ''
+                error: null
             }
         case "FETCH_PETS_SUCCESS":
             return {
                 loading: false,
                 data: action.payload,
-                error: ''
+                error: null
             }
         case "FETCH_PETS_FAILURE":
             return {

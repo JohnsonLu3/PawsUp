@@ -23,7 +23,7 @@ class Main extends React.Component {
     return (
       <main>
         {
-          this.state.error === true ?
+          this.props.error !== null ?
             <div className="errorMessage">Server Currently Not Available, Using Test Data</div>
             : null
         }
@@ -90,6 +90,7 @@ class Main extends React.Component {
 }
 const mapStateToProps = state => {
   return {
+    error: state.pets.error,
     pets: state.pets.data,
     watchList: state.watchList,
     passList: state.passList
