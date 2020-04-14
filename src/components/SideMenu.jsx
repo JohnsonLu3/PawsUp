@@ -116,7 +116,7 @@ export default class SideMenu extends React.Component {
 
     hideMenu = () => {
         $("#sideMenu").addClass("close");
-        $("#sideMenu").attr("aria-hidden", false);
+        $("#sideMenu").attr("aria-hidden", true);
         $("#dim").addClass("hide");
     }
 

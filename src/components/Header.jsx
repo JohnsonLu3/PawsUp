@@ -23,6 +23,6 @@ export default Header;
 
 function showMenu() {
   $("#sideMenu").removeClass("close");
-  $("#sideMenu").attr("aria-hidden", true);
+  $("#sideMenu").attr("aria-hidden", false);
   $("#dim").removeClass("hide");
 }
