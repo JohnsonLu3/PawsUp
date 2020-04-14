@@ -10,6 +10,7 @@
   max-width: 25%;
   right: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   transition-timing-function: ease-in;
   transition-duration: 0.5s;
   a {
@@ -118,6 +119,18 @@
   border: none;
   text-decoration: none;
   display: flex;
+}
+
+#reset_btn {
+  border: none;
+  background: none;
+  color: #145eff;
+  position: absolute;
+  bottom: 10px;
+  padding: 10px 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .close {

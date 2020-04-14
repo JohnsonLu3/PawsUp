@@ -41,12 +41,6 @@ class SideMenu extends React.Component {
                         <li>
                             <Link to={this.goToWatchList}><span id="watchList">View Watch List</span></Link>
                         </li>
-                        <li>
-                            <button onClick={this.resetState}>
-                                <span id="reset">Reset</span>
-                                <span className="sr">Page will refresh on reset</span>
-                            </button>
-                        </li>
                     </ul>
 
                     <section>
@@ -108,6 +102,11 @@ class SideMenu extends React.Component {
                             Search By Filters
                         </button>
                     </section>
+
+                    <button id="reset_btn" onClick={this.resetState}>
+                        <span id="reset">Reset History</span>
+                        <span className="sr">Page will refresh on reset</span>
+                    </button>
                 </div>
             </div>
         )
