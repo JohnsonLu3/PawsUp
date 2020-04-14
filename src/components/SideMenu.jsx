@@ -22,7 +22,7 @@ export default class SideMenu extends React.Component {
     render() {
         return (
             <div>
-                <div id="sideMenu" className="hide">
+                <div id="sideMenu" className="close">
                     <span className="sideHeader">
                         <h2>Settings</h2>
                         <button onClick={this.hideMenu}><span className="sr">Hide Menu</span><FontAwesomeIcon icon={faTimes} />
@@ -115,8 +115,8 @@ export default class SideMenu extends React.Component {
     }
 
     hideMenu = () => {
-        let menu = document.getElementById("sideMenu");
-        $(menu).addClass("hide");
+        $("#sideMenu").addClass("close");
+        $("#sideMenu").attr("aria-hidden", false);
         $("#dim").addClass("hide");
     }
 

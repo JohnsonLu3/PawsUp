@@ -44,6 +44,8 @@ main {
   z-index: 4;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.623);
+  transition-timing-function: ease-in;
+  transition-duration: 0.5s;
 }
 
 .errorMessage {

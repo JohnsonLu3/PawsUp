@@ -4,15 +4,15 @@ import '../scss/Header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw, faCog } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className="">
       <div id="loadingbar"></div>
-        <Link to="/">
-          <FontAwesomeIcon className="brandIcon" icon={faPaw} />
-        </Link>
+      <Link to="/">
+        <FontAwesomeIcon className="brandIcon" icon={faPaw} />
+      </Link>
       <h1>Paws Up</h1>
       <button id="settings" onClick={showMenu}><FontAwesomeIcon className="brandIcon" icon={faCog} /></button>
     </header>
@@ -22,6 +22,7 @@ function Header() {
 export default Header;
 
 function showMenu() {
-  $("#sideMenu").removeClass("hide");
+  $("#sideMenu").removeClass("close");
+  $("#sideMenu").attr("aria-hidden", true);
   $("#dim").removeClass("hide");
 }

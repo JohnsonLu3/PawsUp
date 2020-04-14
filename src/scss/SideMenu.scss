@@ -10,7 +10,8 @@
   max-width: 25%;
   right: 0;
   overflow-y: auto;
-
+  transition-timing-function: ease-in;
+  transition-duration: 0.5s;
   a {
     text-decoration: none;
   }
@@ -104,6 +105,10 @@
       }
     }
   }
+}
+
+.close {
+  right: -30% !important;
 }
 
 .hide {
