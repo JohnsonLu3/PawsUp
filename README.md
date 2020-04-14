@@ -4,7 +4,7 @@ Creating a web app to use the Pet Finder API and develope a Tinder like experinc
 
 ***To Do:***
 - Add Filters
-  - Fix map and location gathering
+  - ~~Fix map and location gathering~~
   - Create a filter section for user to select age,needs,ect.
   - Add CATS!
 - ~~Make Redux Store persist on reload~~
