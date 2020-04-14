@@ -1,7 +1,7 @@
 ***React.js App***
 
 Creating a web app to use the Pet Finder API and develope a Tinder like experince for Pet Adoption.
-
+When the Pawsup Api is down, it will used test data contained in ./src/test
 ***To Do:***
 - Add Filters
   - ~~Fix map and location gathering~~
