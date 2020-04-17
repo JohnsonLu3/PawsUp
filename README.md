@@ -6,6 +6,9 @@ Creating a web app to use the Pet Finder API and develope a Tinder like experinc
 When the Pawsup Api is down, it will used test data contained in ./src/test
 
 ***To Do:***
+- Allow for mouse swiping in frame to view photos better
+- Update how pictures are displayed. Maybe a carousel.
+- Get a server to host the backend
 - Add Filters
   - ~~Fix map and location gathering~~
   - Create a filter section for user to select age,needs,ect.
